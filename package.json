@@ -1,0 +1,203 @@
+{
+    "name": "braun",
+    "description": "Minimal portfolio, profile, blog",
+    "version": "1.4.1",
+    "private": true,
+    "engines": {
+        "ghost": ">=5.0.0"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Themex Studio",
+        "email": "trong@themex.studio",
+        "url": "https://themex.studio"
+    },
+    "keywords": [
+        "ghost",
+        "theme",
+        "ghost-theme"
+    ],
+    "docs": "https://themex.studio/docs/ferriss-docs/",
+    "config": {
+        "posts_per_page": 18,
+        "image_sizes": {
+            "xs": {
+                "width": 150
+            },
+            "s": {
+                "width": 400
+            },
+            "m": {
+                "width": 750
+            },
+            "l": {
+                "width": 960
+            },
+            "xl": {
+                "width": 1140
+            },
+            "xxl": {
+                "width": 1920
+            }
+        },
+        "card_assets": true,
+        "custom": {
+            "edit_mode": {
+                "type": "boolean",
+                "default": false,
+                "description": "Toggle Edit shortcut. Turn off to hide the edit button."
+            },
+            "color_combinations": {
+                "type": "select",
+                "options": [
+                    "Default",
+                    "Onyx",
+                    "Rust",
+                    "Fossil",
+                    "Mint",
+                    "Ember",
+                    "Ice",
+                    "Maelstrom"
+                ],
+                "default": "Default",
+                "description": "Preset color combination"
+            },
+            "appearance": {
+                "type": "select",
+                "options": [
+                    "light",
+                    "dark",
+                    "system",
+                    "user"
+                ],
+                "default": "system"
+            },
+            "tagline_text": {
+                "type": "text",
+                "default": "Designer and creator."
+            },
+            "show_navigation_icons": {
+                "type": "boolean",
+                "default": true
+            },
+            "navigation_buttons": {
+                "type": "select",
+                "options": [
+                    "Subscription",
+                    "Custom",
+                    "Off"
+                ],
+                "default": "Subscription",
+                "description": "Main action on the header"
+            },
+            "navigation_buttons_text": {
+                "type": "text",
+                "default": "Action",
+                "visibility": "navigation_buttons:Custom"
+            },
+            "navigation_buttons_link": {
+                "type": "text",
+                "default": "https://themex.studio",
+                "visibility": "navigation_buttons:Custom"
+            },
+            "hero_layout": {
+                "type": "select",
+                "options": [
+                    "Rectangle image top",
+                    "Circle image top",
+                    "Image right",
+                    "Image left",
+                    "Wide image top"
+                ],
+                "default": "Rectangle image top",
+                "group": "homepage",
+                "description": "Layout of homepage hero section"
+            },
+            "case_study_card_style": {
+                "type": "select",
+                "options": [
+                    "Full row",
+                    "Grid"
+                ],
+                "default": "Full row",
+                "group": "homepage",
+                "description": "Define the style of the case study cards"
+            },
+            "blog_article_layout": {
+                "type": "select",
+                "options": [
+                    "Card",
+                    "Expanded",
+                    "Right thumbnail",
+                    "Text-only",
+                    "Minimal"
+                ],
+                "default": "Card",
+                "group": "homepage"
+            },
+            "blog_image_orientation": {
+                "type": "select",
+                "options": [
+                    "Landscape",
+                    "Square",
+                    "Portrait"
+                ],
+                "default": "Landscape",
+                "group": "homepage",
+                "description": "Define orientation of article cards"
+            },
+            "blog_category_navigation": {
+                "type": "text",
+                "group": "homepage",
+                "description": "Add tag slugs for category navigation of the blog page. Example: design,code,tips"
+            },
+            "excluded_tags": {
+                "type": "text",
+                "default": "books,now,hash-timeline,hash-gallery",
+                "group": "homepage",
+                "description": "Tag slugs to exclude from showing in the homepage feed. Example: books,now,timeline,course"
+            },
+            "email_signup_text": {
+                "type": "text",
+                "default": "Subscribe to my monthly newsletter",
+                "group": "homepage"
+            },
+            "show_author": {
+                "type": "boolean",
+                "default": false,
+                "group": "post"
+            },
+            "show_social_share": {
+                "type": "boolean",
+                "default": false,
+                "group": "post"
+            },
+            "show_subscription_box": {
+                "type": "boolean",
+                "default": false,
+                "group": "post"
+            }
+        }
+    },
+    "scripts": {
+        "dev": "gulp",
+        "test": "gscan .",
+        "zip": "gulp zip"
+    },
+    "devDependencies": {
+        "@tryghost/shared-theme-assets": "2.3.2",
+        "autoprefixer": "10.4.14",
+        "beeper": "2.1.0",
+        "cssnano": "6.0.1",
+        "gscan": "4.37.1",
+        "gulp": "4.0.2",
+        "gulp-concat": "2.6.1",
+        "gulp-livereload": "4.0.2",
+        "gulp-postcss": "9.0.1",
+        "gulp-uglify": "3.0.2",
+        "gulp-zip": "5.1.0",
+        "postcss": "8.4.25",
+        "postcss-easy-import": "4.0.0",
+        "pump": "3.0.0"
+    }
+}

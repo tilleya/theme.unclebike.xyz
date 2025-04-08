@@ -1,0 +1,141 @@
+{{!-- render logo wall --}}
+{{#match tags.[0].slug "hash-section-logos"}}
+    <section class="{{post_class}} section-container logo-board" style="background-color: {{tags.[0].accent_color}}">
+        {{> "components/section-title" title=title }}
+        <div class="container medium logo-list">
+            {{content}}
+        </div>
+    </section>
+{{/match}}
+
+{{!-- render side-project --}}
+{{#match tags.[0].slug "hash-section-side-projects" }}
+    <section class="{{post_class}} section-container section-side-project" style="background-color: {{tags.[0].accent_color}}">
+        {{> "components/section-title" title=title view_all_url=url }}
+        {{#get "pages" filter="tag:hash-content-side-project" limit="4" order="published_at desc" as |content|}}
+            <div class="cards content-3col gh-feed container medium">
+                {{#foreach content }}
+                    {{> "components/card-project" showVisual=true isSmall=true imageSizes="64px"}}
+                {{/foreach}}
+            </div>
+        {{/get}}
+    </section>
+{{/match}}
+
+{{!-- render resource --}}
+{{#match tags.[0].slug "hash-section-resource" }}
+    <section class="{{post_class}} section-container section-tools" style="background-color: {{tags.[0].accent_color}}">
+        {{> "components/section-title" title=title view_all_url=url }}
+        {{#if twitter_description }}
+            {{#get "pages" filter="tag:{{twitter_description}}" limit="4" order="published_at desc" as |content|}}
+                <div class="cards kg-grid kg-grid-4col gh-feed container medium">
+                    {{#foreach content }}
+                        {{> "components/card-project" showVisual=true isSmall=true imageSizes="64px"}}
+                    {{/foreach}}
+                </div>
+            {{/get}}
+        {{/if}}
+    </section>
+{{/match}}
+
+{{!-- render blog --}}
+{{#match tags.[0].slug "hash-section-blog" }}
+    <section class="{{post_class}} section-container section-blog" style="background-color: {{tags.[0].accent_color}}">
+        {{> "components/section-title" title=title view_all_url=url }}
+        {{#if @custom.excluded_tags}}
+            {{#get "posts" limit="7" filter="tag:-[{{@custom.excluded_tags}}]" include="tags"}}
+                <div class="post-feed{{#match @custom.blog_article_layout "!=" "Minimal"}} expanded{{/match}}{{#match @custom.blog_article_layout "Right thumbnail"}} right-thumbnail{{/match}}{{#match @custom.blog_article_layout "Text-only"}} text-only{{/match}}{{#match @custom.blog_article_layout "Card"}} feed-card kg-grid kg-grid-3col{{/match}} gh-feed container medium">
+                    {{#foreach posts}}
+                        {{> "loop" noDate=false}}
+                    {{/foreach}}
+                </div>
+            {{/get}}
+        {{else}}
+            {{#get "posts" limit="7" include="tags"}}
+                <div class="post-feed{{#match @custom.blog_article_layout "!=" "Minimal"}} expanded{{/match}}{{#match @custom.blog_article_layout "Right thumbnail"}} right-thumbnail{{/match}}{{#match @custom.blog_article_layout "Text-only"}} text-only{{/match}}{{#match @custom.blog_article_layout "Card"}} feed-card kg-grid kg-grid-3col{{/match}} gh-feed container medium">
+                    {{#foreach posts}}
+                        {{> "loop" noDate=false}}
+                    {{/foreach}}
+                </div>
+            {{/get}}
+        {{/if}}
+    </section>
+{{/match}}
+
+{{!-- render case study --}}
+{{#match tags.[0].slug "hash-section-case-studies" }}
+    <section class="{{post_class}} section-container case-study" style="background-color: {{tags.[0].accent_color}}">
+        {{> "components/section-title" title=title view_all_url=url }}
+        {{#get "pages" include="tags" filter="tag:hash-content-case-study" limit=work_project_counter order="published_at desc" as |content|}}
+            <div class="cards kg-grid {{#match @custom.case_study_card_style "Full row"}}full-row u-gap-big{{else}}kg-grid-2col{{/match}} container medium">
+                {{#foreach content}}
+                    {{> "components/card-project" showVisual=true isOverlay=false isLarge=false postFeedStyle=@custom.case_study_card_style imageSizes="900px" isReverse=true hideTags=true }}
+                {{/foreach}}
+            </div>
+        {{/get}}
+    </section>
+{{/match}}
+
+{{!-- render testimonials --}}
+{{#match tags.[0].slug "hash-section-testimonials" }}
+    <section class="{{post_class}} section-container testimonials" style="background-color: {{tags.[0].accent_color}}">
+        {{> "components/section-title" title=title }}
+        <div class="container medium">
+            <div class="kg-width-content kg-grid kg-grid-3col">
+                {{ content }}
+            </div>
+        </div>
+    </section>
+{{/match}}
+
+{{!-- render static banner --}}
+{{#match tags.[0].slug "hash-section-static-banner" }}
+    <section class="{{post_class}} section-container static-banner" style="background-color: {{tags.[0].accent_color}}"> 
+        {{> "components/section-title" title=title }}
+        <div class="container medium">
+            <div class="kg-width-content content-3col">
+                {{ content }}
+            </div>
+        </div>
+    </section>
+{{/match}}
+
+{{!-- render static text card --}}
+{{#match tags.[0].slug "hash-section-static-text" }}
+    <section class="{{post_class}} section-container static-text" style="background-color: {{tags.[0].accent_color}}"> 
+        {{> "components/section-title" title=title }}
+        <div class="container medium">
+            <div class="kg-width-content content-3col">
+                {{ content }}
+            </div>
+        </div>
+    </section>
+{{/match}}
+
+{{!-- render experiences --}}
+{{#match tags.[0].slug "hash-section-experiences" }}
+    <section class="{{post_class}} section-container experiences" style="background-color: {{tags.[0].accent_color}}">
+        {{> "components/section-title" title=title }}
+        {{#get "pages" include="tags" filter="tag:hash-content-experience" order="published_at desc" as |content|}}
+            <div class="container medium">
+                {{#foreach content}}
+                    {{> "components/experience" }}
+                {{/foreach}}
+            </div>
+        {{/get}}
+    </section>
+{{/match}}
+
+{{!-- render books --}}
+{{#match tags.[0].slug "hash-section-books" }}
+    <section class="{{post_class}} section-container books" style="background-color: {{tags.[0].accent_color}}">
+        {{> "components/section-title" title=title view_all_url=url }}
+        {{#get "posts" include="tags" filter="tag:books" limit="4" order="published_at desc" as |content|}}
+            <div class="cards kg-grid kg-grid-4col container medium">
+                {{#foreach content}}
+                    {{> "components/card-project" showVisual=true isPost=true isBook=true isOverlay=false isLarge=false hideTags=true imageSizes="340px"}}
+                {{/foreach}}
+            </div>
+        {{/get}}
+    </section>
+{{/match}}

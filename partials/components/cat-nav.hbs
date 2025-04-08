@@ -1,0 +1,31 @@
+<nav class="blog-nav container medium">
+    {{#if navItem }}
+        {{#get "tags" filter="slug:[{{navItem}}]" }}
+            <div class="blog-navbar">
+                <a href="/blog/" class="body-2 blog-navbar-item">All</a>
+                {{#get "pages" slug="featured-posts" limit="1"}}
+                    {{#foreach pages}}
+                        <a href={{url}} class="body-2 blog-navbar-item">{{title}}</a>
+                    {{/foreach}}
+                {{/get}}
+                {{#foreach tags}}
+                    <a href="{{url}}" class="body-2 blog-nav-{{slug}} blog-navbar-item">{{name}}</a>
+                {{/foreach}}
+            </div>
+        {{/get}}
+    {{else}}
+        {{#get "tags" limit="5" include="count.posts" order="count.posts desc"}}
+            <div class="blog-navbar">
+                <a href="/blog/" class="body-2 blog-navbar-item">All</a>
+                {{#get "pages" slug="featured-posts" limit="1"}}
+                    {{#foreach pages}}
+                        <a href={{url}} class="body-2 blog-navbar-item">{{title}}</a>
+                    {{/foreach}}
+                {{/get}}
+                {{#foreach tags}}
+                    <a href="{{url}}" class="body-2 blog-nav-{{slug}} blog-navbar-item">{{name}}</a>
+                {{/foreach}}
+            </div>
+        {{/get}}
+    {{/if}}
+</nav>

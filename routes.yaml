@@ -1,0 +1,46 @@
+routes:
+  /featured-posts/:
+    template: featured-posts
+    controller: channel
+    data: page.featured-posts
+    filter: featured:true
+  /works/:
+    template: works
+    data: page.works
+  /timeline/:
+    template: serie
+    controller: channel
+    data: page.timeline
+    filter: tag:hash-timeline
+  /course/:
+    template: serie
+    controller: channel
+    data: page.course
+    filter: tag:hash-course
+  /gallery/:
+    template: gallery
+    controller: channel
+    data: page.gallery
+    filter: tag:hash-gallery
+collections:
+  /now/:
+    permalink: /{slug}/
+    template: now
+    data: page.now
+    filter: tag:now
+  /books/:
+    permalink: /books/{slug}/
+    template: books
+    data: page.books
+    filter: tag:books+tag:-hash-book-reading
+  /blog/:
+    permalink: /{slug}/
+    template: blog
+    data: page.blog
+    filter: tag:-[books,now,hash-timeline,hash-gallery]
+  /:
+    permalink: /{slug}/
+    template: index
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/

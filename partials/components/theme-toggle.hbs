@@ -1,0 +1,9 @@
+{{#match @custom.appearance "user"}}
+    <button class="gh-theme-toggle gh-icon-btn{{#if isDesktopOnly}} visible-desktop{{else}} visible-mobile{{/if}}" aria-label="Toggle theme">
+        <div class="theme-toggle-icon">
+            <div class="moon-or-sun">
+                <div class="moon-mask"></div>
+            </div>
+        </div>
+    </button>
+{{/match}}

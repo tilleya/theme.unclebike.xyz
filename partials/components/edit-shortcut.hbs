@@ -1,0 +1,6 @@
+{{#if @custom.edit_mode}}
+    <a href="{{@site.url}}/ghost/editor/{{#if isPost}}post{{else}}page{{/if}}/{{id}}/" class="edit-button" aria-label="Edit in Ghost admin" target="_blank" rel="noopener noreferrer">
+        {{> "icons/edit"}}
+        <span class="edit-text">Edit</span>
+    </a>
+{{/if}}

@@ -1,0 +1,43 @@
+{{!< default}}
+
+<div class="content-area">
+    <main class="site-main">
+        
+        {{#page}}
+            {{> "page-header" noImage=true smallWidth=true}}
+        {{/page}}
+
+        <div class="masonry-container">
+            <div class="masonry-wrapper gh-feed" style="--columns: 5;">
+                {{#foreach posts}}
+                    <article class="masonry-brick" data-id="{{@number}}">
+                        {{#if feature_image}}
+                            <figure class="masonry-content">
+                                <img class="zoom-image"
+                                    srcset="{{img_url feature_image size="s"}} 400w,
+                                            {{img_url feature_image size="l"}} 750w"
+                                    src="{{img_url feature_image size="m"}}"
+                                    data-original="{{img_url feature_image}}"
+                                    data-small="{{img_url feature_image size="s"}}"
+                                    data-width="{{feature_image_width}}"
+                                    data-height="{{feature_image_height}}"
+                                    alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                                    loading="lazy"
+                                >
+                            </figure>
+                            <a {{#if canonical_url}} href="{{canonical_url}}" target="_blank" rel="noopener noreferrer"{{else}}href="{{url}}"{{/if}} aria-label="{{title}}">
+                                <span class="masonry-title card-title">
+                                    <span class="masonry-title-text">{{title}}</span>
+                                    {{#if canonical_url}}{{> "icons/arrow-upright"}}{{else}}{{> "icons/arrow-right"}}{{/if}}
+                                </span>
+                            </a>
+                        {{/if}}
+                    </article>
+                {{/foreach}}
+            </div>
+            {{pagination}}
+        </div>
+    </main>
+</div> 
+
+{{#contentFor "body_class"}}{{#if next}} paged-next{{/if}}{{#if @member}} logged-in{{/if}}{{/contentFor}}

@@ -1,0 +1,51 @@
+{{!-- Use this template if you want to show content of all post in one page --}}
+
+{{!< default}}
+<div class="content-area">
+    <main class="site-main serie-page">
+        
+        {{#page}}
+            <section class="container medium{{#if feature_image }} with-feature-image{{/if}}">
+                {{#if feature_image}}
+                    <div class="media-wrapper">
+                        <img 
+                            src="{{img_url feature_image size="xs"}}" 
+                            alt="{{title}}">
+                    </div>
+                {{/if}}
+                <div class="hero-wrapper">
+                    <h1 class="hero-header">{{title}}</h1>
+                    {{#if custom_excerpt}}
+                        <p class="body-1 hero-desc"> {{{custom_excerpt}}}</p>
+                    {{/if}}
+                </div>
+            </section>
+
+            <section class="container-resource">
+                {{#if twitter_description }}
+                    {{#get "pages" filter="tag:{{twitter_description}}" limit="all" order="published_at desc" as |content|}}
+                        <div class="cards kg-grid kg-grid-4col gh-feed container medium">
+                            {{#foreach content }}
+                                {{> "components/card-project" showVisual=true isSmall=true imageSizes="64px"}}
+                            {{/foreach}}
+                        </div>
+                    {{/get}}
+                {{else}}
+                    <div class="cards kg-grid container medium">
+                        <div class="empty-state">
+                            <p>✨ Hey, look like you haven't added a tag for this resource page yet! Let add it.</p>
+                            <p>Step 1/ From Ghost admin, open this page</p>
+                            <p>Step 2/ Open Page setting sidebar from the top right. Click X card</p>
+                            <p>Step 3/ In X description, add the slug of the tag.</p>
+                            <p>Step 4/ Save</p>
+                        </div>
+                    </div>
+                {{/if}}
+            </section>
+        {{/page}}
+
+        {{!-- {{pagination}} --}}
+    </main>
+</div>
+
+{{#contentFor "body_class"}}{{#if next}} paged-next{{/if}}{{#if @member}} logged-in{{/if}}{{/contentFor}}

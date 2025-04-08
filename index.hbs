@@ -1,0 +1,62 @@
+{{!< default}}
+
+<div class="content-area">
+    <main class="site-main">
+
+        {{!-- render the hero section --}}
+        {{#get "pages" filter="tags:hash-section-hero" include="tags" limit="1" as |header|}}
+            {{#if header}}
+                {{#foreach header}}
+                    <div class='hero-wrapper container medium'>
+                        <div class='hero-grid is-hero-image-{{#match @custom.hero_layout "Image right"}}right{{/match}}{{#match @custom.hero_layout "Image left"}}left{{/match}}{{#match @custom.hero_layout "Rectangle image top"}}top{{/match}}{{#match @custom.hero_layout "Circle image top"}}circle-top{{/match}}{{#match @custom.hero_layout "Wide image top"}}wide-image-top{{/match}}{{#if tags.[0].accent_color}} with-bg-color{{/if}}' style="background-color: {{tags.[0].accent_color}};">
+                            {{#if twitter_description}}   
+                                <figure class="hero-image hero-video">
+                                    <video class="video-cover preload-video" id="hero-image" autoplay loop muted playsinline src="{{twitter_description}}" alt="{{title}}" loading="lazy" preload="auto"></video>
+                                </figure>
+                            {{else}}
+                                {{#if feature_image}}
+                                    <figure class="hero-image">
+                                        <img 
+                                            srcset="{{img_url feature_image size="s" format="webp"}} 400w,
+                                                {{img_url feature_image size="l" format="webp"}} 750w,
+                                                {{img_url feature_image size="xl" format="webp"}} 1140w,
+                                                {{#match @custom.hero_layout "Wide image top"}}{{img_url feature_image size="xxl" format="webp"}} 1920w{{/match}}"
+                                            sizes="{{#match @custom.hero_layout "Wide image top"}}100%{{else}}400px{{/match}}" 
+                                            src="{{img_url feature_image size="xl"}}" 
+                                            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
+                                    </figure>
+                                {{/if}}
+                            {{/if}}
+                            <div class='hero-content {{#unless feature_image}}{{/unless}}'>
+                                <h1 class="h1 hero-title">{{{title}}}</h1>
+                                {{> "components/edit-shortcut"}}
+                                <section class='gh-content'>
+                                    {{ content }}
+                                </section>
+                                {{#unless @member}}
+                                    {{#if @site.members_enabled}}
+                                        <div class="hero-subscription">
+                                            <div class="body-1 subscribe-title"> {{@custom.email_signup_text}} </div>
+                                            {{> subscription-box}}
+                                        </div>
+                                    {{/if}}
+                                {{/unless}}
+                            </div>
+                        </div>
+                    </div>
+                {{/foreach}}
+            {{else}}
+                {{> "components/empty-state"}}
+            {{/if}}
+        {{/get}}
+
+        {{!-- render remaining page content --}}
+        {{#get "pages" filter="tags:[hash-section-logos,hash-section-side-projects,hash-section-resource,hash-section-blog,hash-section-case-studies,hash-section-testimonials,hash-section-experiences,hash-section-static-banner,hash-section-static-text,hash-section-books]" include="tags" order="published_at asc" as |pages|}}
+            {{#foreach pages}}
+                {{> "components/landing-content" work_project_counter="4"}}
+            {{/foreach}}
+        {{/get}}
+    </main>
+</div>
+
+{{#contentFor "body_class"}}{{#if next}} paged-next{{/if}}{{#if @member}} logged-in{{/if}}{{/contentFor}}

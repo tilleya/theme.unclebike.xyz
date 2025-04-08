@@ -1,0 +1,35 @@
+{{!-- Use this template if you want to show content of all post in one page --}}
+
+{{!< default}}
+<div class="content-area">
+    <main class="site-main serie-page">
+        {{#page}}
+            {{> "page-header" smallWidth=true}}
+        {{/page}}
+        <section class="section-container serie-overview">
+            <header class="feed-header container small">
+                <div class="feed-header-wrapper">
+                    <h2 class="section-title feed-header-title">{{t 'On this page'}}</h2>
+                </div>
+            </header>
+            <div class="post-feed container small">
+                {{#foreach posts limit="all"}}
+                    {{> "loop" noDate=false noLink=true}}
+                {{/foreach}}
+            </div>
+        </section>
+
+        <div class="gh-feed">
+            {{#foreach posts}}
+                <section class="section-container post-expanded">
+                    <div class="single-content gh-content kg-canvas">
+                        {{> "components/post-full" showTitle=true link=true}}
+                    </div>
+                </section>
+            {{/foreach}}
+        </div>
+        {{pagination}}
+    </main>
+</div>
+
+{{#contentFor "body_class"}}{{#if next}} paged-next{{/if}}{{#if @member}} logged-in{{/if}}{{/contentFor}}

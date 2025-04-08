@@ -1,0 +1,44 @@
+{{!< default}}
+
+<div class="content-area custom-page">
+    <main class="site-main">
+        {{#page}}
+            {{> "page-header"}}
+        {{/page}}
+        {{#get "posts" include="tags" filter="tag:hash-book-reading" limit="all" order="published_at desc"}}
+            {{#if posts}}
+                <section class="section-container books">
+                    <header class="feed-header container medium">
+                        <div class="feed-header-wrapper">
+                            <h2 class="h2 feed-header-title">{{t 'Currently reading'}}</h2>
+                        </div>
+                    </header>
+                    <div class="cards kg-grid kg-grid-3col container medium">
+                        {{#foreach posts}}
+                            {{> "components/card-project" showVisual=true isBook=true isOverlay=false isLarge=false hideTags=true }}
+                        {{/foreach}}
+                    </div>
+                </section>
+            {{/if}}
+        {{/get}}
+
+        {{!-- exlude the books in the reading list above (tag:hash-book-reading) --}}
+        <section class="section-container books">
+            <header class="feed-header container medium">
+                    <div class="feed-header-wrapper">
+                        <h2 class="h2 feed-header-title">{{@site.title}}{{t '’s Shelf'}}&nbsp;<span>{{t '{count} books' count=pagination.total}}</span>
+                        </h2>
+                    </div>
+            </header>
+            <div class="cards kg-grid kg-grid-3col gh-feed container medium">
+                {{#foreach posts}}
+                    {{> "components/card-project" showVisual=true isBook=true isOverlay=false isLarge=false hideTags=true imageSizes="340px"}}
+                {{/foreach}}
+            </div>
+            {{pagination}}
+        </section>
+
+    </main>
+</div>
+
+{{#contentFor "body_class"}}{{#if next}} paged-next{{/if}}{{#if @member}} logged-in{{/if}}{{/contentFor}}

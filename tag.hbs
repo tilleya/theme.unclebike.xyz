@@ -1,0 +1,35 @@
+{{!< default}}
+
+<div class="content-area">
+    <main class="site-main">
+        {{#tag}}
+            <section class="container medium">
+                <div class="hero-wrapper">
+                    <h1 class="hero-header">{{name}}</h1>
+                    {{#if description}}
+                        <p class="body-1 hero-desc"> {{{description}}}</p>
+                    {{/if}}
+                </div>
+            </section>
+        {{/tag}}
+
+        {{#if @custom.blog_category_navigation }}
+            {{> "components/cat-nav" navItem=@custom.blog_category_navigation}}
+        {{else}}
+            {{> "components/cat-nav"}}
+        {{/if}}
+
+        <section class="section-container">
+            <div class="post-feed{{#match @custom.blog_article_layout "!=" "Minimal"}} expanded{{/match}}{{#match @custom.blog_article_layout "Right thumbnail"}} right-thumbnail{{/match}}{{#match @custom.blog_article_layout "Text-only"}} text-only{{/match}}{{#match @custom.blog_article_layout "Card"}} feed-card kg-grid kg-grid-3col{{/match}} gh-feed container medium">
+                {{#foreach posts}}
+                    {{> "loop" noDate=false}}
+                {{/foreach}}
+            </div>
+        </section>
+
+        {{pagination}}
+
+    </main>
+</div>
+
+{{#contentFor "body_class"}}{{#if next}} paged-next{{/if}}{{#if @site.logo}}{{#if @site.cover_image}} with-alt-header{{/if}}{{/if}}{{/contentFor}}

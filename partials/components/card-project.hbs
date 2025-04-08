@@ -1,0 +1,49 @@
+
+<article class="card {{post_class}}{{#if isOverlay}} card-overlay{{/if}}{{#if isSmall}} card-text-only{{/if}}{{#if isReverse}} card-reverse{{/if}}{{#if isBook}} card-book{{/if}}" data-month="{{date format="MMMM YYYY"}}">
+    {{#if showVisual}}
+        {{#if feature_image}}
+            <figure class="card-image{{#if isSmall}} card-image-small{{/if}}">
+                <img
+                    srcset="{{#if isSmall}}{{img_url feature_image size="xs" format="webp"}} 150w{{else}}
+                            {{img_url feature_image size="s" format="webp"}} 400w,
+                            {{img_url feature_image size="m" format="webp"}} 750w,
+                            {{#match @custom.case_study_card_style "Full row"}}{{img_url feature_image size="xxl" format="webp"}} 1920w{{/match}}{{/if}}
+                            "
+                    sizes="{{#if imageSizes}}{{imageSizes}}{{else}}410px{{/if}}"
+                    src="{{img_url feature_image size="m"}}"
+                    alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                    loading="lazy"
+                >
+            </figure>
+        {{/if}}
+    {{/if}}
+    <div class="card-wrapper">
+        {{#if twitter_description}}    
+            <div class="sub-heading">{{twitter_description}}</div>
+        {{/if}}
+        <h2 class="{{#if isLarge}}h2{{else}}{{#if isSmall}}h4{{else}}h3{{/if}}{{/if}} card-title">
+            {{title}}
+            {{#if canonical_url}}{{> "icons/arrow-upright"}}{{else}}{{> "icons/arrow-right"}}{{/if}}
+        </h2>
+        {{#unless hideTags}}
+            {{#unless isPost}}
+                {{#match tags.length ">" 1}}
+                    <div class="tags-list">
+                        {{#foreach tags limit="2"}}
+                            <div class="sub-heading tag-item">
+                                {{name}}
+                            </div>
+                        {{/foreach}}
+                    </div>
+                {{/match}}
+            {{/unless}}
+        {{/unless}}
+        {{#unless isOverlay}}
+            {{#if excerpt}}
+                <div class="sub-heading card-excerpt">{{excerpt words="20"}}</div>
+            {{/if}}
+        {{/unless}}
+        {{> "components/edit-shortcut" isPost=isPost}}
+    </div>
+    <a class="u-permalink" href={{#if canonical_url}}{{canonical_url}}{{else}}{{url}}{{/if}} aria-label="{{title}}"></a>
+</article>

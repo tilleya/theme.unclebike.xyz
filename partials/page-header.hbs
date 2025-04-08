@@ -1,0 +1,18 @@
+<section class="container{{#if smallWidth }} small{{else}} medium{{/if}}{{#if feature_image }} with-feature-image{{/if}}">
+    {{#unless noImage}}
+        {{#if feature_image}}
+            <div class="media-wrapper">
+                <img 
+                    src="{{img_url feature_image size="m"}}" 
+                    alt="{{title}}"
+                    class="u-object-fit">
+            </div>
+        {{/if}}
+    {{/unless}}
+    <div class="hero-wrapper">
+        <h1 class="hero-header">{{title}}</h1>
+        {{#if custom_excerpt}}
+            <p class="body-1 hero-desc"> {{{custom_excerpt}}}</p>
+        {{/if}}
+    </div>
+</section>

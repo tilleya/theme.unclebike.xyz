@@ -1,0 +1,17 @@
+{{!< default}}
+
+<div class="content-area custom-page custom-works">
+    <main class="site-main">
+        {{#page}}
+            {{> "page-header"}}
+        {{/page}}
+        {{#get "pages" filter="tags:[hash-section-side-projects,hash-section-case-studies,hash-section-testimonials,hash-section-experiences]" include="tags" order="published_at asc" as |pages|}}
+            {{#foreach pages}}
+                {{> "components/landing-content" work_project_counter="all" }}
+            {{/foreach}}
+        {{/get}}
+        
+    </main>
+</div>
+
+{{#contentFor "body_class"}}{{#if next}} paged-next{{/if}}{{#if @member}} logged-in{{/if}}{{/contentFor}}
