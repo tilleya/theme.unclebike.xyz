@@ -23,7 +23,7 @@
 
             <section class="container-resource">
                 {{#if twitter_description }}
-                    {{#get "pages" filter="tag:{{twitter_description}}" limit="all" order="published_at desc" as |content|}}
+                    {{#get "pages" filter="tag:{{twitter_title}}" limit="all" order="published_at desc" as |content|}}
                         <div class="cards kg-grid kg-grid-4col gh-feed container medium">
                             {{#foreach content }}
                                 {{> "components/card-project" showVisual=true isSmall=true imageSizes="48px"}}
