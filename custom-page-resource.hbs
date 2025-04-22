@@ -19,6 +19,9 @@
                         <p class="body-1 hero-desc"> {{{custom_excerpt}}}</p>
                     {{/if}}
                 </div>
+                {{#post}}
+       			 {{> "content" width="wide"}}
+    			{{/post}}
             </section>
 
             <section class="container-resource">
