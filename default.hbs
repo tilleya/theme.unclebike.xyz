@@ -21,43 +21,51 @@
 
   const form    = document.getElementById('formspree-inline');
   const wrapper = form.querySelector('.inline-field-wrapper');
+  const nextBtn = document.getElementById('inline-next');
   const data    = {};
   let   step    = 0, input;
 
   function renderStep() {
     wrapper.innerHTML = '';
     input = document.createElement('input');
-    input.name        = steps[step].name;
-    input.type        = steps[step].type;
-    input.placeholder = steps[step].placeholder;
-    input.required    = true;
-    // **no extra classes** ­– uses your global input styles
+    Object.assign(input, {
+      name:        steps[step].name,
+      type:        steps[step].type,
+      placeholder: steps[step].placeholder,
+      required:    true
+    });
     wrapper.appendChild(input);
     input.focus();
+    nextBtn.textContent = step < steps.length - 1 ? 'Next' : 'Submit';
+  }
+
+  function advance() {
+    const val = input.value.trim();
+    if (!val) return;
+    data[steps[step].name] = val;
+    step++;
+    if (step < steps.length) {
+      renderStep();
+    } else {
+      // append hidden fields then submit
+      Object.entries(data).forEach(([k,v]) => {
+        const h = document.createElement('input');
+        h.type  = 'hidden';
+        h.name  = k;
+        h.value = v;
+        form.appendChild(h);
+      });
+      form.submit();
+    }
   }
 
   form.addEventListener('keydown', e => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      const val = input.value.trim();
-      if (!val) return;
-      data[steps[step].name] = val;
-      step++;
-      if (step < steps.length) {
-        renderStep();
-      } else {
-        // build hidden inputs from collected data, then submit
-        Object.entries(data).forEach(([key, value]) => {
-          const h = document.createElement('input');
-          h.type  = 'hidden';
-          h.name  = key;
-          h.value = value;
-          form.appendChild(h);
-        });
-        form.submit();
-      }
+      advance();
     }
   });
+  nextBtn.addEventListener('click', advance);
 
   renderStep();
 });
