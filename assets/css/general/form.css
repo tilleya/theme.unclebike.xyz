@@ -140,11 +140,14 @@ fieldset {
     margin-bottom: 1.6rem;
 }
 
+/* allow the field to flex/shrink between CTA and button */
 .inline-field-wrapper {
-	min-width: 300px;
+  flex: 1 1 auto;
+  min-width: 0;           /* lets it shrink below 300px if needed */
+  position: relative;
 }
 
-/* make the toggle‐card content a two‐column flex at desktop */
+/* make the toggle-card content a two-column flex at desktop */
 .kg-card.kg-toggle-card .kg-toggle-content.two-col-form {
   display: flex;
   gap: 2rem;
@@ -160,7 +163,7 @@ fieldset {
   }
 }
 
-/* style the left‐hand CTA */
+/* style the left-hand CTA */
 .kg-card.kg-toggle-card .form-cta {
   flex: 1;
   font-size: 2rem;
@@ -169,65 +172,85 @@ fieldset {
   align-self: center;
 }
 
-/* right‐hand form takes remaining space */
+/* right-hand form takes remaining space */
 .kg-card.kg-toggle-card .kg-toggle-content.two-col-form form {
+  display: flex;               /* new: make form itself a flex row */
+  align-items: center;
   flex: 1;
-  max-width: none;           /* override the 480px if needed */
+  max-width: none;             /* override the 480px if needed */
 }
 
-/* move the Next/Submit button below the field on mobile */
+/* on mobile, stack form and button */
 @media (max-width: 767px) {
   #inline-next {
     margin-top: 1rem;
     position: static !important;
     width: auto;
   }
+  .inline-form {
+    flex-direction: column;
+    max-width: 100%;
+  }
+  .inline-form input {
+    flex: unset;
+  }
 }
 
-/* keep your existing button positioning on desktop */
+/* keep your existing button positioning on desktop, plus flex-smoothing */
 #inline-next {
   position: absolute;
   top: 5px;
   right: 5px;
+  flex: 0 0 auto;
+  transition: width 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
 }
 
-/* give the inline input a little breathing room */
+/* input flex & animate */
 .inline-field-wrapper input {
+  width: 100%;
+  flex: 1 1 auto;
+  min-width: 0;
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* fade-out + slide left */
+.inline-field-wrapper input.fade-out {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+/* fade-in + slide right */
+.inline-field-wrapper input.fade-in {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+/* your existing breathing-room for the input */
+.inline-field-wrapper input {
+  /* if you still want that 4rem padding tweak: */
   width: calc(100% - 4rem);
 }
-/* two-column flex, stacks to one on narrow screens */
+
+/* two-column helper (you can drop duplicates if you like) */
+.two-col-form {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+}
+@media (max-width: 768px) {
   .two-col-form {
-    display: flex;
-    align-items: flex-start;
-    gap: 2rem;
+    flex-direction: column;
   }
-  @media (max-width: 768px) {
-    .two-col-form {
-      flex-direction: column;
-    }
-  }
-
-  /* left-hand “Any Questions?” styling */
-  .two-col-form .form-cta {
-    flex: 1;
-    font-size: 1.8rem;
-    font-weight: var(--font-weight-bold);
-    color: var(--primary-text-color);
-  }
-
-  /* make the form take the other half */
-  .two-col-form .form-wrapper {
-    flex: 1;
-    max-width: none; /* override your 480px if needed */
-  }
-
-@media (max-width: 767px) {
-    .inline-form {
-        flex-direction: column;
-        max-width: 100%;
-    }
-
-    .inline-form input {
-        flex: unset;
-    }
+}
+.two-col-form .form-cta {
+  flex: 1;
+  font-size: 1.8rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-text-color);
+}
+.two-col-form .form-wrapper {
+  flex: 1;
+  max-width: none;
 }
