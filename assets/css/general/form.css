@@ -209,7 +209,7 @@ fieldset {
 
 .inline-field-wrapper form-button {
 	border: var(--radii-medium);
-	height 100%;
+	height: 100%;
 
 }
 
