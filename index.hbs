@@ -51,7 +51,7 @@
         {{/get}}
 
         {{!-- render remaining page content --}}
-        {{#get "pages" filter="tags:[hash-section-logos,hash-section-side-projects,hash-section-resource,hash-section-blog,hash-section-case-studies,hash-section-testimonials,hash-section-experiences,hash-section-static-banner,hash-section-static-text,hash-section-books]" include="tags" order="published_at asc" as |pages|}}
+        {{#get "pages" filter="tags:[hash-section-resource,hash-section-logos,hash-section-side-projects,hash-section-blog,hash-section-case-studies,hash-section-testimonials,hash-section-experiences,hash-section-static-banner,hash-section-static-text,hash-section-books]" include="tags" order="published_at asc" as |pages|}}
             {{#foreach pages}}
                 {{> "components/landing-content" work_project_counter="4"}}
             {{/foreach}}
