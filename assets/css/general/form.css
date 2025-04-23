@@ -169,7 +169,7 @@ fieldset {
   font-size: 2rem;
   font-weight: var(--font-weight-bold);
   color: var(--primary-text-color);
-  align-self: center;
+  align-self: start;
 }
 
 /* form takes remaining space & spaces input + button equally */
@@ -183,7 +183,7 @@ fieldset {
 
 /* reset form-wrapper max-width if needed */
 .kg-card.kg-toggle-card .two-col-form .form-wrapper {
-  max-width: none;
+  max-width: 100%;
 }
 
 /* input flex & animate */
