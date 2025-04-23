@@ -13,13 +13,16 @@
                             alt="{{title}}">
                     </div>
                 {{/if}}
-                <div class="hero-wrapper">
-                    <h1 class="hero-header">{{title}}</h1>
-                    {{#if custom_excerpt}}
-                        <p class="body-1 hero-desc"> {{{custom_excerpt}}}</p>
-                    {{/if}}
-                    {{> "content" width="wide"}}
-                </div>
+            <div class="hero-wrapper">
+  <h1 class="hero-header">{{title}}</h1>
+  {{#if custom_excerpt}}
+    <p class="body-1 hero-desc">{{custom_excerpt}}</p>
+  {{/if}}
+</div>
+
+<section class="page-content page-content--wide">
+  {{{content}}}
+</section>
                 
        			 
     			
