@@ -189,6 +189,26 @@
     color: var(--secondary-text-color-overlay);
 }
 
+.card-section {
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: var(--border-radius, 8px);
+  padding: 2rem;
+  box-shadow: var(--card-shadow, 0 2px 4px rgba(0,0,0,0.05));
+}
+
+.card-section--columns {
+  /* two columns, gap of 2rem */
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+/* optional: prevent widows/orphans */
+.card-section--columns p {
+  orphans: 1;
+  widows: 1;
+}
+
 @media (max-width: 767px) {
     .full-row .card-image {
         aspect-ratio: 1/1;
