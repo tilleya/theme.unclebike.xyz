@@ -26,8 +26,8 @@
 {{#match tags.[0].slug "hash-section-resource" }}
     <section class="{{post_class}} section-container section-tools" style="background-color: {{tags.[0].accent_color}}">
         {{> "components/section-title" title=title view_all_url=url }}
-        {{#if twitter_description }}
-            {{#get "pages" filter="tag:{{twitter_description}}" limit="4" order="published_at desc" as |content|}}
+        {{#if twitter_title }}
+            {{#get "pages" filter="tag:{{twitter_title}}" limit="4" order="published_at desc" as |content|}}
                 <div class="cards kg-grid kg-grid-4col gh-feed container medium">
                     {{#foreach content }}
                         {{> "components/card-project" showVisual=true isSmall=true imageSizes="64px"}}
