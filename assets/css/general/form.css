@@ -140,71 +140,69 @@ fieldset {
     margin-bottom: 1.6rem;
 }
 
-/* group input + button as one line */
+/* parent flex container for input + button */
 .inline-field-group {
   display: flex;
   align-items: center;
-  max-width: 100%;
-}
-
-/* input: left‐only border-radius, no right border */
-.inline-field-wrapper input {
-  flex: 1 1 auto;
-  min-width: 0;
   width: 100%;
-  padding-right: 1rem; /* small gap from the arrow */
-  border: 1px solid var(--divider-color);
-  border-right: none;
-  border-radius: var(--radii-small) 0 0 var(--radii-small);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  /* no gap here, we share a single continuous border */
 }
 
-/* arrow button: right-only border-radius, no left border */
-.arrow-btn {
-  flex: 0 0 auto;
-  border: 1px solid var(--divider-color);
-  border-left: none;
+/* input wrapper flexes to fill all available space */
+.inline-field-group .inline-field-wrapper {
+  flex: 1 1 auto;
+  min-width: 0; /* allow it to shrink if needed */
+}
+
+/* the injected <input> takes 100% of wrapper */
+.inline-field-wrapper input {
+  width: 100%;
+  padding:     0.75rem 1rem;                  /* adjust for your theme */
+  padding-right: 3rem;                        /* room for arrow */
+  border:      1px solid var(--divider-color);
+  border-right: none;                         /* no double border */
+  border-radius: var(--radii-small) 0 0 var(--radii-small);
+  transition:  opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* arrow-btn sits flush on the right, no flex-grow */
+.inline-field-group .arrow-btn {
+  flex:        0 0 auto;
+  margin:      0;                            /* no gap */
+  border:      1px solid var(--divider-color);
+  border-left: none;                         /* no double border */
   border-radius: 0 var(--radii-small) var(--radii-small) 0;
-  background: var(--ghost-accent-color);
-  color: var(--white-color);
-  padding: 0 1rem;
-  height: var(--form-input-height);
-  display: flex;
+  background:  var(--ghost-accent-color);
+  color:       var(--white-color);
+  padding:     0 1rem;
+  height:      var(--form-input-height);
+  display:     flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  cursor:      pointer;
+  transition:  background-color 0.2s ease, transform 0.2s ease;
 }
 
 /* hover state */
-.arrow-btn:hover {
+.inline-field-group .arrow-btn:hover {
   background: hsl(from var(--ghost-accent-color) h s l/.9);
 }
 
-/* ensure your fade animations still apply to the input */
-.inline-field-wrapper input.fade-out {
-  opacity: 0;
-  transform: translateX(-10px);
-}
-.inline-field-wrapper input.fade-in {
-  opacity: 0;
-  transform: translateX(10px);
-}
-
-/* mobile: stack below */
+/* mobile: stack the arrow below the field */
 @media (max-width: 767px) {
   .inline-field-group {
     flex-direction: column;
   }
-  .arrow-btn {
-    margin-top: 1rem;
-    width: auto;
-    border-left: 1px solid var(--divider-color);
-    border-radius: var(--radii-small);
-  }
   .inline-field-wrapper input {
+    padding-right: 1rem;      /* less room on mobile */
     border-right: 1px solid var(--divider-color);
     border-radius: var(--radii-small);
-    padding-right: 1rem;
+  }
+  .inline-field-group .arrow-btn {
+    margin-top: 1rem;
+    border-left: 1px solid var(--divider-color);
+    border-radius: var(--radii-small);
+    width: 100%;
+    height: auto;
   }
 }
