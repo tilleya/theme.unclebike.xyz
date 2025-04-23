@@ -143,7 +143,7 @@ fieldset {
 /* allow the field to flex/shrink between CTA and button */
 .inline-field-wrapper {
   flex: 1 1 auto;
-  min-width: 0;           /* lets it shrink below 300px if needed */
+  min-width: 0;           /* lets it shrink as needed */
   position: relative;
 }
 
@@ -174,9 +174,9 @@ fieldset {
 
 /* right-hand form takes remaining space */
 .kg-card.kg-toggle-card .kg-toggle-content.two-col-form form {
-  display: flex;               /* new: make form itself a flex row */
+  display: flex;               /* form is a flex row */
   align-items: center;
-  flex: 1;
+  flex: 1 1 auto;
   max-width: none;             /* override the 480px if needed */
 }
 
@@ -196,20 +196,19 @@ fieldset {
   }
 }
 
-/* keep your existing button positioning on desktop, plus flex-smoothing */
+/* button sits inline next to input (no overlap) */
 #inline-next {
-  position: absolute;
-  top: 5px;
-  right: 5px;
   flex: 0 0 auto;
-  transition: width 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+  position: static !important;
+  margin-left: 1rem;
+  transition: width 0.2s ease, transform 0.2s ease;
 }
 
 /* input flex & animate */
 .inline-field-wrapper input {
-  width: 100%;
   flex: 1 1 auto;
   min-width: 0;
+  width: 100%;
   opacity: 1;
   transform: translateX(0);
   transition: opacity 0.2s ease, transform 0.2s ease;
@@ -227,13 +226,12 @@ fieldset {
   transform: translateX(10px);
 }
 
-/* your existing breathing-room for the input */
+/* breathing-room hack, if still desired */
 .inline-field-wrapper input {
-  /* if you still want that 4rem padding tweak: */
   width: calc(100% - 4rem);
 }
 
-/* two-column helper (you can drop duplicates if you like) */
+/* two-column helper */
 .two-col-form {
   display: flex;
   align-items: flex-start;
@@ -252,5 +250,5 @@ fieldset {
 }
 .two-col-form .form-wrapper {
   flex: 1;
-  max-width: none;
+  max-width: none; /* override your 480px if needed */
 }
