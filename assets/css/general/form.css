@@ -140,15 +140,57 @@ fieldset {
     margin-bottom: 1.6rem;
 }
 
-.inline-input {
-    border: none;
-    border-bottom: 1px solid #ccc;
-    padding: 0.2em 0;
-    font-size: 1em;
-    outline: none;
-    width: 100%;
-    max-width: 480px; /* adjust as needed */
+/* make the toggle‐card content a two‐column flex at desktop */
+.kg-card.kg-toggle-card .kg-toggle-content.two-col-form {
+  display: flex;
+  gap: 2rem;
+  padding: 2.4rem;              /* match default toggle padding */
+  background: var(--hero-background-color);
+  border-radius: var(--radii-large);
+}
+
+/* collapse to one column on mobile */
+@media (max-width: 768px) {
+  .kg-card.kg-toggle-card .kg-toggle-content.two-col-form {
+    flex-direction: column;
   }
+}
+
+/* style the left‐hand CTA */
+.kg-card.kg-toggle-card .form-cta {
+  flex: 1;
+  font-size: 2rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-text-color);
+  align-self: center;
+}
+
+/* right‐hand form takes remaining space */
+.kg-card.kg-toggle-card .kg-toggle-content.two-col-form form {
+  flex: 1;
+  max-width: none;           /* override the 480px if needed */
+}
+
+/* move the Next/Submit button below the field on mobile */
+@media (max-width: 767px) {
+  #inline-next {
+    margin-top: 1rem;
+    position: static !important;
+    width: auto;
+  }
+}
+
+/* keep your existing button positioning on desktop */
+#inline-next {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+/* give the inline input a little breathing room */
+.inline-field-wrapper input {
+  width: calc(100% - 4rem);
+}
 /* two-column flex, stacks to one on narrow screens */
   .two-col-form {
     display: flex;
