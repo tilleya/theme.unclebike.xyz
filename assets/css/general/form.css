@@ -140,6 +140,10 @@ fieldset {
     margin-bottom: 1.6rem;
 }
 
+.inline-field-wrapper {
+	min-width: 300px;
+}
+
 /* make the toggle‐card content a two‐column flex at desktop */
 .kg-card.kg-toggle-card .kg-toggle-content.two-col-form {
   display: flex;
