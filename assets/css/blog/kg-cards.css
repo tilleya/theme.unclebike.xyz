@@ -93,6 +93,7 @@ blockquote.kg-blockquote-alt {
     font-size: 1.8rem;
     font-weight: var(--font-weight-bold);
     height: 2.7em;
+    margin: 2rem 0;
 }
 
 .kg-video-card,
