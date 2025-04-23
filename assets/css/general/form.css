@@ -140,62 +140,79 @@ fieldset {
     margin-bottom: 1.6rem;
 }
 
-/* parent flex container for input + button */
+/* group wraps input + button */
 .inline-field-group {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: var(--field-height);
+}
+
+/* base styles for the text field */
+.inline-field-group input {
+  width: 100%;                /* fill the group */
+  height: var(--field-height);
+  padding: 0 1rem;
+  padding-right: calc(var(--field-height) + var(--border-width));
+  box-sizing: border-box;
+  border: var(--border-width) solid var(--accent);
+  border-radius: calc(var(--border-radius) + var(--border-width));
+  transition: box-shadow 0.3s;
+  outline: none;
+}
+
+/* hover/focus ring on the input */
+.inline-field-group input:hover,
+.inline-field-group input:focus {
+  box-shadow: 0 0 0 var(--border-width) var(--accent);
+}
+
+/* submit button positioned flush on the right */
+.inline-field-group .arrow-btn {
+  position: absolute;
+  top: var(--border-width);
+  right: var(--border-width);
+  height: calc(var(--field-height) - 2 * var(--border-width));
+  width: var(--field-height); /* square button */
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
   display: flex;
   align-items: center;
-  width: 100%;
-  /* no gap here, we share a single continuous border */
-}
-
-/* input wrapper flexes to fill all available space */
-.inline-field-group .inline-field-wrapper {
-  flex: 1 1 auto;
-  min-width: 0; /* allow it to shrink if needed */
-}
-
-/* the injected <input> takes 100% of wrapper */
-.inline-field-wrapper input {
-  width: 100%;
-  padding:     0.75rem 1rem;                  /* adjust for your theme */
-  padding-right: 3rem;                        /* room for arrow */
-  border:      1px solid var(--divider-color);
-  border-right: none;                         /* no double border */
-  border-radius: var(--radii-small) 0 0 var(--radii-small);
-  transition:  opacity 0.2s ease, transform 0.2s ease;
-}
-
-/* arrow-btn sits flush on the right, no flex-grow */
-.inline-field-group .arrow-btn {
-  flex:        0 0 auto;
-  margin:      0;                            /* no gap */
-  border:      1px solid var(--divider-color);
-  border-left: none;                         /* no double border */
-  border-radius: 0 var(--radii-small) var(--radii-small) 0;
-  background:  var(--ghost-accent-color);
-  color:       var(--white-color);
-  font-size: 1.6rem;
-  font-weight: 700;
-  padding:     0 1rem;
-  height:      var(--form-input-height);
-  display:     flex;
-  align-items: center;
   justify-content: center;
-  cursor:      pointer;
-  transition:  background-color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  transition: box-shadow 0.3s, background-color 0.2s;
+  -webkit-appearance: none;
 }
 
-/* hover state */
-.inline-field-group .arrow-btn:hover {
-  background: hsl(from var(--ghost-accent-color) h s l/.9);
-}
-/* when the input is focused, give the arrow the same focus ring */
-.inline-field-group:focus-within .arrow-btn {
-  box-shadow:
-    0 0 0 2px hsl(from var(--brand-color) h s l/.8),
-    0 0 0 6px hsl(from var(--brand-color) h s l/.3);
+/* inset ring on hover/focus of the button */
+.inline-field-group .arrow-btn:hover,
+.inline-field-group .arrow-btn:focus {
+  box-shadow: inset 0 0 0 var(--border-width) white;
 }
 
+/* mobile: stack field above button */
+@media (max-width: 767px) {
+  .inline-field-group {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+  .inline-field-group input {
+    padding-right: 1rem;
+    border-radius: var(--border-radius);
+    border-right: var(--border-width) solid var(--accent);
+  }
+  .inline-field-group .arrow-btn {
+    position: static;
+    margin-top: 0.75rem;
+    width: 100%;
+    border-radius: var(--border-radius);
+    height: auto;
+    padding: 0.75rem;
+  }
+}
 @media (max-width: 767px) {
   .inline-field-group {
     flex-direction: column;
