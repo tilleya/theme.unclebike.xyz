@@ -140,63 +140,71 @@ fieldset {
     margin-bottom: 1.6rem;
 }
 
-/* wrapper & input */
-.inline-field-wrapper {
-  position: relative;
+/* group input + button as one line */
+.inline-field-group {
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+}
+
+/* input: left‐only border-radius, no right border */
+.inline-field-wrapper input {
   flex: 1 1 auto;
   min-width: 0;
-}
-.inline-field-wrapper input {
   width: 100%;
-  padding-right: 3rem;        /* room for the arrow */
+  padding-right: 1rem; /* small gap from the arrow */
+  border: 1px solid var(--divider-color);
+  border-right: none;
+  border-radius: var(--radii-small) 0 0 var(--radii-small);
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-/* arrow button inside field */
-.inline-field-wrapper .arrow-btn {
-  position: absolute;
-  top: 50%;
-  right: 0.75rem;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-  color: var(--tertiary-text-color);
-  transition: color 0.2s ease;
-}
-.inline-field-wrapper .arrow-btn:hover {
-  color: var(--ghost-accent-color);
-}
-.inline-field-wrapper .arrow-btn svg {
-  width: 1.6rem;
-  height: 1.6rem;
-}
-
-/* form & card container */
-.kg-card.kg-toggle-card .kg-toggle-content,
-aside.kg-card.kg-toggle-card {
-  padding: 2.4rem;
-  background: var(--hero-background-color);
-  border-radius: var(--radii-large);
-}
-.kg-card.kg-toggle-card form {
+/* arrow button: right-only border-radius, no left border */
+.arrow-btn {
+  flex: 0 0 auto;
+  border: 1px solid var(--divider-color);
+  border-left: none;
+  border-radius: 0 var(--radii-small) var(--radii-small) 0;
+  background: var(--ghost-accent-color);
+  color: var(--white-color);
+  padding: 0 1rem;
+  height: var(--form-input-height);
   display: flex;
   align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-/* mobile: stack button below */
+/* hover state */
+.arrow-btn:hover {
+  background: hsl(from var(--ghost-accent-color) h s l/.9);
+}
+
+/* ensure your fade animations still apply to the input */
+.inline-field-wrapper input.fade-out {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+.inline-field-wrapper input.fade-in {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+/* mobile: stack below */
 @media (max-width: 767px) {
-  .inline-field-wrapper input {
-    padding-right: 1.5rem;
-  }
-  .inline-field-wrapper .arrow-btn {
-    position: static;
-    transform: none;
-    margin-top: 1rem;
-  }
-  .inline-form {
+  .inline-field-group {
     flex-direction: column;
+  }
+  .arrow-btn {
+    margin-top: 1rem;
+    width: auto;
+    border-left: 1px solid var(--divider-color);
+    border-radius: var(--radii-small);
+  }
+  .inline-field-wrapper input {
+    border-right: 1px solid var(--divider-color);
+    border-radius: var(--radii-small);
+    padding-right: 1rem;
   }
 }
