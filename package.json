@@ -182,7 +182,8 @@
     "scripts": {
         "dev": "gulp",
         "test": "gscan .",
-        "zip": "gulp zip"
+        "zip": "gulp zip",
+        "build": "gulp build --production"
     },
     "devDependencies": {
         "@tryghost/shared-theme-assets": "2.3.2",
