@@ -29,7 +29,7 @@
             </section>
 
             <section class="container-resource">
-                {{#if twitter_description }}
+                {{#if twitter_title }}
                     {{#get "pages" filter="tag:{{twitter_title}}" limit="all" order="published_at desc" as |content|}}
                         <div class="cards kg-grid kg-grid-4col gh-feed container medium">
                             {{#foreach content }}
