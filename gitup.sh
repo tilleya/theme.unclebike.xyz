@@ -4,6 +4,7 @@ if [ $# -eq 0 ]; then
 else
     commitMessage="$*"
 fi
+yarn build
 git add .
 git commit -m "$commitMessage"
 git push
