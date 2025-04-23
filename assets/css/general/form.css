@@ -207,7 +207,7 @@ fieldset {
   transform: translateX(10px);
 }
 
-.inline-field-wrapper form-button {
+.inline-field-wrapper .form-button {
 	border: var(--radii-medium);
 	height: 100%;
 
