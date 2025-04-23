@@ -147,7 +147,7 @@ fieldset {
   position: relative;
 }
 
-/* make the toggle-card content a two-column flex at desktop */
+/* two-column layout for toggle-card content */
 .kg-card.kg-toggle-card .kg-toggle-content.two-col-form {
   display: flex;
   gap: 2rem;
@@ -165,43 +165,25 @@ fieldset {
 
 /* style the left-hand CTA */
 .kg-card.kg-toggle-card .form-cta {
-  flex: 1;
+  flex: 1 0 auto;
   font-size: 2rem;
   font-weight: var(--font-weight-bold);
   color: var(--primary-text-color);
   align-self: center;
 }
 
-/* right-hand form takes remaining space */
+/* form takes remaining space & spaces input + button equally */
 .kg-card.kg-toggle-card .kg-toggle-content.two-col-form form {
   display: flex;               /* form is a flex row */
   align-items: center;
   flex: 1 1 auto;
   max-width: none;             /* override the 480px if needed */
+  gap: 2rem;                   /* equal gap between input & button */
 }
 
-/* on mobile, stack form and button */
-@media (max-width: 767px) {
-  #inline-next {
-    margin-top: 1rem;
-    position: static !important;
-    width: auto;
-  }
-  .inline-form {
-    flex-direction: column;
-    max-width: 100%;
-  }
-  .inline-form input {
-    flex: unset;
-  }
-}
-
-/* button sits inline next to input (no overlap) */
-#inline-next {
-  flex: 0 0 auto;
-  position: static !important;
-  margin-left: 1rem;
-  transition: width 0.2s ease, transform 0.2s ease;
+/* reset form-wrapper max-width if needed */
+.kg-card.kg-toggle-card .two-col-form .form-wrapper {
+  max-width: none;
 }
 
 /* input flex & animate */
@@ -226,12 +208,29 @@ fieldset {
   transform: translateX(10px);
 }
 
-/* breathing-room hack, if still desired */
-.inline-field-wrapper input {
-  width: calc(100% - 4rem);
+/* button inline, no overlap */
+#inline-next {
+  flex: 0 0 auto;
+  position: static !important;
+  transition: width 0.2s ease, transform 0.2s ease;
 }
 
-/* two-column helper */
+/* on mobile, stack form & button */
+@media (max-width: 767px) {
+  #inline-next {
+    margin-top: 1rem;
+    width: auto;
+  }
+  .inline-form {
+    flex-direction: column;
+    max-width: 100%;
+  }
+  .inline-form input {
+    flex: unset;
+  }
+}
+
+/* (optional) two-column helper */
 .two-col-form {
   display: flex;
   align-items: flex-start;
@@ -249,6 +248,6 @@ fieldset {
   color: var(--primary-text-color);
 }
 .two-col-form .form-wrapper {
-  flex: 1;
+  flex: 1 1 auto;
   max-width: none; /* override your 480px if needed */
 }
