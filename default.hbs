@@ -25,8 +25,22 @@
   const data    = {};
   let   step    = 0, input;
 
-  function renderStep() {
+function renderStep() {
+  const old = input;
+  stepBtnState(); // update Next/Submit text early
+
+  if (old) {
+    // animate old field out
+    old.classList.add('fade-out');
+    old.disabled = true;
+    setTimeout(() => replaceField(), 200);
+  } else {
+    replaceField();
+  }
+
+  function replaceField() {
     wrapper.innerHTML = '';
+    // create new field
     input = document.createElement('input');
     Object.assign(input, {
       name:        steps[step].name,
@@ -34,10 +48,17 @@
       placeholder: steps[step].placeholder,
       required:    true
     });
+    input.classList.add('fade-in');
     wrapper.appendChild(input);
+    // trigger fade-in
+    requestAnimationFrame(() => input.classList.remove('fade-in'));
     input.focus();
-    nextBtn.textContent = step < steps.length - 1 ? 'Next' : 'Submit';
   }
+
+  function stepBtnState() {
+    nextBtn.textContent = (step < steps.length - 1) ? 'Next' : 'Submit';
+  }
+}
 
   function advance() {
     const val = input.value.trim();
@@ -66,6 +87,7 @@
     }
   });
   nextBtn.addEventListener('click', advance);
+  
 
   renderStep();
 });
