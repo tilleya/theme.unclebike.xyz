@@ -22,19 +22,16 @@
   const form    = document.getElementById('formspree-inline');
   const wrapper = form.querySelector('.inline-field-wrapper');
   const data    = {};
-  let   step    = 0;
-  let   input;
+  let   step    = 0, input;
 
   function renderStep() {
     wrapper.innerHTML = '';
     input = document.createElement('input');
-    Object.assign(input, {
-      name:        steps[step].name,
-      type:        steps[step].type,
-      placeholder: steps[step].placeholder,
-      required:    true,
-      className:   'inline-input'
-    });
+    input.name        = steps[step].name;
+    input.type        = steps[step].type;
+    input.placeholder = steps[step].placeholder;
+    input.required    = true;
+    // **no extra classes** ­– uses your global input styles
     wrapper.appendChild(input);
     input.focus();
   }
@@ -44,12 +41,12 @@
       e.preventDefault();
       const val = input.value.trim();
       if (!val) return;
-      data[ steps[step].name ] = val;
+      data[steps[step].name] = val;
       step++;
       if (step < steps.length) {
         renderStep();
       } else {
-        // append hidden inputs and submit
+        // build hidden inputs from collected data, then submit
         Object.entries(data).forEach(([key, value]) => {
           const h = document.createElement('input');
           h.type  = 'hidden';
