@@ -149,6 +149,31 @@ fieldset {
     width: 100%;
     max-width: 480px; /* adjust as needed */
   }
+/* two-column flex, stacks to one on narrow screens */
+  .two-col-form {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  @media (max-width: 768px) {
+    .two-col-form {
+      flex-direction: column;
+    }
+  }
+
+  /* left-hand “Any Questions?” styling */
+  .two-col-form .form-cta {
+    flex: 1;
+    font-size: 1.8rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-text-color);
+  }
+
+  /* make the form take the other half */
+  .two-col-form .form-wrapper {
+    flex: 1;
+    max-width: none; /* override your 480px if needed */
+  }
 
 @media (max-width: 767px) {
     .inline-form {
