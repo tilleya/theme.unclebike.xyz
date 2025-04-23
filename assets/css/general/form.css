@@ -181,15 +181,14 @@ fieldset {
   gap: 2rem;                   /* equal gap between input & button */
 }
 
-/* reset form-wrapper max-width if needed */
+/* reset form-wrapper max-width if needed
 .kg-card.kg-toggle-card .two-col-form .form-wrapper {
   max-width: 100%;
-}
+} */
 
 /* input flex & animate */
 .inline-field-wrapper input {
   flex: 1 1 auto;
-  min-width: 0;
   width: 100%;
   opacity: 1;
   transform: translateX(0);
