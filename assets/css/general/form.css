@@ -196,21 +196,21 @@ fieldset {
     0 0 0 6px hsl(from var(--brand-color) h s l/.3);
 }
 
-/* mobile: stack the arrow below the field */
 @media (max-width: 767px) {
   .inline-field-group {
     flex-direction: column;
   }
   .inline-field-wrapper input {
-    padding-right: 1rem;      /* less room on mobile */
+    padding-right: 1rem;
     border-right: 1px solid var(--divider-color);
     border-radius: var(--radii-small);
+    width: 100%;
   }
   .inline-field-group .arrow-btn {
-    margin-top: 1rem;
-    border-left: 1px solid var(--divider-color);
-    border-radius: var(--radii-small);
+    margin-top: 0.75rem;
     width: 100%;
     height: auto;
+    border-left: 1px solid var(--divider-color);
+    border-radius: var(--radii-small);
   }
 }
