@@ -189,25 +189,7 @@
     color: var(--secondary-text-color-overlay);
 }
 
-.card-section {
-  background: var(--hero-background-color);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius, 8px);
-  padding: 2rem;
 
-}
-
-.card-section--columns {
-  /* two columns, gap of 2rem */
-  column-count: 2;
-  column-gap: 2rem;
-}
-
-/* optional: prevent widows/orphans */
-.card-section--columns p {
-  orphans: 1;
-  widows: 1;
-}
 
 @media (max-width: 767px) {
     .full-row .card-image {

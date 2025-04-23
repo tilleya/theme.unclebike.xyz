@@ -284,8 +284,7 @@ pre {
 
 hr {
     position: relative;
-    margin-right: auto;
-    margin-left: auto;
+    margin: 2rem auto;
     border: 0;
     border-top: 1px solid;
     height: 1px;
