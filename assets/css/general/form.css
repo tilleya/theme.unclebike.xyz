@@ -169,7 +169,7 @@ fieldset {
   font-size: 2rem;
   font-weight: var(--font-weight-bold);
   color: var(--primary-text-color);
-  align-self: start;
+  align-self: center;
 }
 
 /* form takes remaining space & spaces input + button equally */
@@ -178,7 +178,7 @@ fieldset {
   align-items: center;
   flex: 1 1 auto;
   max-width: none;             /* override the 480px if needed */
-  gap: 2rem;                   /* equal gap between input & button */
+  gap: 1rem;                   /* equal gap between input & button */
 }
 
 /* reset form-wrapper max-width if needed
