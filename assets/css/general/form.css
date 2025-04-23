@@ -189,6 +189,12 @@ fieldset {
 .inline-field-group .arrow-btn:hover {
   background: hsl(from var(--ghost-accent-color) h s l/.9);
 }
+/* when the input is focused, give the arrow the same focus ring */
+.inline-field-group:focus-within .arrow-btn {
+  box-shadow:
+    0 0 0 2px hsl(from var(--brand-color) h s l/.8),
+    0 0 0 6px hsl(from var(--brand-color) h s l/.3);
+}
 
 /* mobile: stack the arrow below the field */
 @media (max-width: 767px) {
