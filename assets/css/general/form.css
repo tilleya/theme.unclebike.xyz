@@ -83,7 +83,7 @@ fieldset {
     cursor: pointer;
     background-color: var(--brand-color);
     border: 0;
-    border-radius: 4px;
+    border-radius: 1rem;
     outline: none;
 }
 
@@ -143,15 +143,15 @@ fieldset {
 /* allow the field to flex/shrink between CTA and button */
 .inline-field-wrapper {
   flex: 1 1 auto;
-  min-width: 0;           /* lets it shrink as needed */
-  position: relative;
+  min-width: 0;
+  position: relative;  /* for absolutely-positioned button */
 }
 
 /* two-column layout for toggle-card content */
 .kg-card.kg-toggle-card .kg-toggle-content.two-col-form {
   display: flex;
   gap: 2rem;
-  padding: 2.4rem;              /* match default toggle padding */
+  padding: 2.4rem;
   background: var(--hero-background-color);
   border-radius: var(--radii-large);
 }
@@ -172,24 +172,24 @@ fieldset {
   align-self: center;
 }
 
-/* form takes remaining space & spaces input + button equally */
+/* form takes remaining space */
 .kg-card.kg-toggle-card .kg-toggle-content.two-col-form form {
-  display: flex;               /* form is a flex row */
+  display: flex;
   align-items: center;
-  flex: 9 1 auto;
-  max-width: none;             /* override the 480px if needed */
-  gap: 1rem;                   /* equal gap between input & button */
+  flex: 1 1 auto;
+  max-width: none;
 }
 
-/* reset form-wrapper max-width if needed
-.kg-card.kg-toggle-card .two-col-form .form-wrapper {
-  max-width: 100%;
-} */
+/* remove gap between input & button since button lives inside the field now */
+.kg-card.kg-toggle-card .kg-toggle-content.two-col-form form {
+  gap: 0;
+}
 
 /* input flex & animate */
 .inline-field-wrapper input {
   flex: 1 1 auto;
   width: 100%;
+  padding-right: 6rem;        /* room for the submit button */
   opacity: 1;
   transform: translateX(0);
   transition: opacity 0.2s ease, transform 0.2s ease;
@@ -207,36 +207,43 @@ fieldset {
   transform: translateX(10px);
 }
 
-.inline-field-wrapper .form-button {
-	border: var(--radii-medium);
-	height: 100%;
-
-}
-
-/* button inline, no overlap */
-#inline-next {
+/* move the button into the right side of the field */
+.inline-field-wrapper .form-button,
+.inline-field-wrapper #inline-next {
+  position: absolute;
+  right: 0.5rem;              /* small gutter from the right edge */
+  top: 50%;
+  transform: translateY(-50%);
+  height: calc(100% - 1rem);  /* slightly shorter than the field for padding */
+  line-height: normal;
+  padding: 0 1.5rem;
+  border-radius: 0 var(--radii-small) var(--radii-small) 0;
   flex: 0 0 auto;
-  position: static !important;
   transition: width 0.2s ease, transform 0.2s ease;
-  
+  cursor: pointer;
 }
 
-/* on mobile, stack form & button */
+/* on mobile, stack form & button below field */
 @media (max-width: 767px) {
-  #inline-next {
-    margin-top: 1rem;
-    width: auto;
-  }
   .inline-form {
     flex-direction: column;
     max-width: 100%;
   }
-  .inline-form input {
-    flex: unset;
+  .inline-field-wrapper input {
+    padding-right: 1.5rem;  /* no button inside on mobile */
+  }
+  .inline-field-wrapper .form-button,
+  .inline-field-wrapper #inline-next {
+    position: static !important;
+    transform: none;
+    margin-top: 1rem;
+    height: auto;
+    width: auto;
+    border-radius: var(--radii-small);
   }
 }
 
-/* (optional) two-column helper */
+/* optional two-column helper */
 .two-col-form {
   display: flex;
   align-items: flex-start;
@@ -255,5 +262,5 @@ fieldset {
 }
 .two-col-form .form-wrapper {
   flex: 1 1 auto;
-  max-width: none; /* override your 480px if needed */
+  max-width: none;
 }
