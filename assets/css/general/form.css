@@ -248,5 +248,5 @@ fieldset {
 }
 .two-col-form .form-wrapper {
   flex: 1 1 auto;
-  max-width: none; /* override your 480px if needed */
+  max-width: 100%; /* override your 480px if needed */
 }
