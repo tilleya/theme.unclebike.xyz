@@ -12,6 +12,58 @@
     <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}">
 
     <script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const steps = [
+    { name: 'message', placeholder: 'Your message...', type: 'text' },
+    { name: 'name',    placeholder: 'Your name...',    type: 'text' },
+    { name: 'email',   placeholder: 'Your email...',   type: 'email' }
+  ];
+
+  const form    = document.getElementById('formspree-inline');
+  const wrapper = form.querySelector('.inline-field-wrapper');
+  const data    = {};
+  let   step    = 0;
+  let   input;
+
+  function renderStep() {
+    wrapper.innerHTML = '';
+    input = document.createElement('input');
+    Object.assign(input, {
+      name:        steps[step].name,
+      type:        steps[step].type,
+      placeholder: steps[step].placeholder,
+      required:    true,
+      className:   'inline-input'
+    });
+    wrapper.appendChild(input);
+    input.focus();
+  }
+
+  form.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const val = input.value.trim();
+      if (!val) return;
+      data[ steps[step].name ] = val;
+      step++;
+      if (step < steps.length) {
+        renderStep();
+      } else {
+        // append hidden inputs and submit
+        Object.entries(data).forEach(([key, value]) => {
+          const h = document.createElement('input');
+          h.type  = 'hidden';
+          h.name  = key;
+          h.value = value;
+          form.appendChild(h);
+        });
+        form.submit();
+      }
+    }
+  });
+
+  renderStep();
+});
         // Function to set the theme
         function setTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
