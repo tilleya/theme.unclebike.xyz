@@ -176,7 +176,7 @@ fieldset {
 .kg-card.kg-toggle-card .kg-toggle-content.two-col-form form {
   display: flex;               /* form is a flex row */
   align-items: center;
-  flex: 1 1 auto;
+  flex: 9 1 auto;
   max-width: none;             /* override the 480px if needed */
   gap: 1rem;                   /* equal gap between input & button */
 }
@@ -207,11 +207,18 @@ fieldset {
   transform: translateX(10px);
 }
 
+.inline-field-wrapper form-button {
+	border: var(--radii-medium);
+	height 100%;
+
+}
+
 /* button inline, no overlap */
 #inline-next {
   flex: 0 0 auto;
   position: static !important;
   transition: width 0.2s ease, transform 0.2s ease;
+  
 }
 
 /* on mobile, stack form & button */
