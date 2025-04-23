@@ -140,113 +140,63 @@ fieldset {
     margin-bottom: 1.6rem;
 }
 
-/* allow the field to flex/shrink between CTA and button */
+/* wrapper & input */
 .inline-field-wrapper {
-  flex: 1 1 auto;
-  min-width: 0;           /* lets it shrink as needed */
   position: relative;
-}
-
-/* two-column layout for toggle-card content */
-.kg-card.kg-toggle-card .kg-toggle-content.two-col-form {
-  display: flex;
-  gap: 2rem;
-  padding: 2.4rem;              /* match default toggle padding */
-  background: var(--hero-background-color);
-  border-radius: var(--radii-large);
-}
-
-/* collapse to one column on mobile */
-@media (max-width: 768px) {
-  .kg-card.kg-toggle-card .kg-toggle-content.two-col-form {
-    flex-direction: column;
-  }
-}
-
-/* style the left-hand CTA */
-.kg-card.kg-toggle-card .form-cta {
-  flex: 1 0 auto;
-  font-size: 2rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--primary-text-color);
-  align-self: center;
-}
-
-/* form takes remaining space & spaces input + button equally */
-.kg-card.kg-toggle-card .kg-toggle-content.two-col-form form {
-  display: flex;               /* form is a flex row */
-  align-items: center;
   flex: 1 1 auto;
-  max-width: none;             /* override the 480px if needed */
-  gap: 2rem;                   /* equal gap between input & button */
+  min-width: 0;
 }
-
-/* reset form-wrapper max-width if needed
-.kg-card.kg-toggle-card .two-col-form .form-wrapper {
-  max-width: 100%;
-} */
-
-/* input flex & animate */
 .inline-field-wrapper input {
-  flex: 1 1 auto;
   width: 100%;
-  opacity: 1;
-  transform: translateX(0);
+  padding-right: 3rem;        /* room for the arrow */
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-/* fade-out + slide left */
-.inline-field-wrapper input.fade-out {
-  opacity: 0;
-  transform: translateX(-10px);
+/* arrow button inside field */
+.inline-field-wrapper .arrow-btn {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  color: var(--tertiary-text-color);
+  transition: color 0.2s ease;
+}
+.inline-field-wrapper .arrow-btn:hover {
+  color: var(--ghost-accent-color);
+}
+.inline-field-wrapper .arrow-btn svg {
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
-/* fade-in + slide right */
-.inline-field-wrapper input.fade-in {
-  opacity: 0;
-  transform: translateX(10px);
+/* form & card container */
+.kg-card.kg-toggle-card .kg-toggle-content,
+aside.kg-card.kg-toggle-card {
+  padding: 2.4rem;
+  background: var(--hero-background-color);
+  border-radius: var(--radii-large);
+}
+.kg-card.kg-toggle-card form {
+  display: flex;
+  align-items: center;
 }
 
-/* button inline, no overlap */
-#inline-next {
-  flex: 0 0 auto;
-  position: static !important;
-  transition: width 0.2s ease, transform 0.2s ease;
-}
-
-/* on mobile, stack form & button */
+/* mobile: stack button below */
 @media (max-width: 767px) {
-  #inline-next {
+  .inline-field-wrapper input {
+    padding-right: 1.5rem;
+  }
+  .inline-field-wrapper .arrow-btn {
+    position: static;
+    transform: none;
     margin-top: 1rem;
-    width: auto;
   }
   .inline-form {
     flex-direction: column;
-    max-width: 100%;
   }
-  .inline-form input {
-    flex: unset;
-  }
-}
-
-/* (optional) two-column helper */
-.two-col-form {
-  display: flex;
-  align-items: flex-start;
-  gap: 2rem;
-}
-@media (max-width: 768px) {
-  .two-col-form {
-    flex-direction: column;
-  }
-}
-.two-col-form .form-cta {
-  flex: 1;
-  font-size: 1.8rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--primary-text-color);
-}
-.two-col-form .form-wrapper {
-  flex: 1 1 auto;
-  max-width: 100%; /* override your 480px if needed */
 }
