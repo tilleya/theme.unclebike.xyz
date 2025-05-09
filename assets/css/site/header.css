@@ -35,7 +35,7 @@ body:has(#announcement-bar-root .gh-announcement-bar) .head-member-actions {
     padding: 2.4rem 1.6rem 0 1.6rem;
     display: flex;
     align-items: stretch;
-    overflow-y: no-scroll;
+    overflow-y: scroll;
     scrollbar-width: none;
     flex-direction: column;
     justify-content: space-between;
