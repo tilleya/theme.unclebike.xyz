@@ -31,11 +31,11 @@ body:has(#announcement-bar-root .gh-announcement-bar) .head-member-actions {
 .head-inner {
     width: var(--sidebar-width);
     height: 100dvh; /* dynamic viewport height */
-    height: 90vh;
+    height: 100vh;
     padding: 2.4rem 1.6rem 0 1.6rem;
     display: flex;
     align-items: stretch;
-    overflow-y: auto;
+    overflow-y: -webkit-paged-y;
     scrollbar-width: none;
     flex-direction: column;
     justify-content: space-between;
