@@ -15,7 +15,7 @@
         {{#get "pages" filter="tag:hash-content-side-project" limit="4" order="published_at desc" as |content|}}
             <div class="cards content-3col gh-feed container medium">
                 {{#foreach content }}
-                    {{> "components/card-project" showVisual=true isSmall=true imageSizes="64px"}}
+                    {{> "components/card-project" showVisual=true isSmall=true imageSizes="80px"}}
                 {{/foreach}}
             </div>
         {{/get}}
@@ -30,7 +30,7 @@
             {{#get "pages" filter="tag:{{twitter_title}}" limit="4" order="published_at desc" as |content|}}
                 <div class="cards kg-grid kg-grid-4col gh-feed container medium">
                     {{#foreach content }}
-                        {{> "components/card-project" showVisual=true isSmall=true imageSizes="64px"}}
+                        {{> "components/card-project" showVisual=true isSmall=true imageSizes="80px"}}
                     {{/foreach}}
                 </div>
             {{/get}}
