@@ -162,7 +162,6 @@ function renderStep() {
     <script src="https://js.stripe.com/v3/"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     {{ghost_head}}
-    {{{block "membership_js"}}}
 </head>
 
 <body class="{{body_class}}{{block "body_class"}}">
@@ -285,6 +284,7 @@ function renderStep() {
     {{!-- TOC --}}
 
     {{ghost_foot}}
+    {{{block "membership_js"}}}
 
 </body>
 </html>
