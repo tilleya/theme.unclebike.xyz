@@ -85,7 +85,6 @@
     padding-top: 3.2rem;
     border-top: 1px solid var(--divider-color);
 }
-
 /* Container: switch + cards grid */
 .membership-cards {
 margin-top: 4rem;
@@ -114,11 +113,14 @@ border: none;
 cursor: pointer;
 transition: background 0.2s ease;
 }
-.membership-switch-wrap button[data-price="monthly"][aria-pressed="true"],
-.membership-switch-wrap button[data-price="yearly"][aria-pressed="true"] {
+
+/* Active toggle button */
+.membership-switch-wrap button[aria-pressed="true"] {
 background-color: var(--brand-color);
 color: var(--primary-text-color-invert);
 }
+
+/* Hover on toggle button */
 .membership-switch-wrap button:hover {
 background-color: var(--hero-background-color);
 }
@@ -139,6 +141,7 @@ transition: transform 0.2s ease;
 transform: translateY(-4px);
 }
 
+/* Card content */
 .membership-card-content {
 display: flex;
 flex-direction: column;
@@ -183,10 +186,19 @@ color: var(--primary-text-color);
 margin-bottom: 0.8rem;
 }
 
+/* Subscribe buttons */
 a.membership-card .global-button {
 margin-top: 2rem;
 width: 100%;
 text-align: center;
+}
+
+/* Hide non-active prices and buttons */
+.membership-cards[data-active-price="monthly"] .membership-card-price[data-yearly],
+.membership-cards[data-active-price="yearly"] .membership-card-price[data-monthly],
+.membership-cards[data-active-price="monthly"] a[data-yearly],
+.membership-cards[data-active-price="yearly"] a[data-monthly] {
+display: none;
 }
 
 /* Responsive tweaks */
