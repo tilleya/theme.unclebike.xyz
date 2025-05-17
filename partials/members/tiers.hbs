@@ -51,8 +51,8 @@
 			</div>
 			{{/if}}
 		</div>
-		<a href="javascript:" data-portal="signup/{{id}}/monthly" class="membership-card-button" data-monthly>{{#if trial_days}}{{t "Start {trial}-day free trial" trial=trial_days}}{{else}}{{t "I'm a "}}{{name}}{{/if}}</a>
-		<a href="javascript:" data-portal="signup/{{id}}/yearly" class="membership-card-button" data-yearly>{{#if trial_days}}{{t "Start {trial}-day free trial" trial=trial_days}}{{else}}{{t "I'm a "}}{{name}}{{/if}}</a>
+		<a href="javascript:" data-portal="signup/{{id}}/monthly" class="membership-card-button" data-monthly>{{#if trial_days}}{{t "Start {trial}-day free trial" trial=trial_days}}{{else}}{{t "Sign Up for "}}{{name}}{{/if}}</a>
+		<a href="javascript:" data-portal="signup/{{id}}/yearly" class="membership-card-button" data-yearly>{{#if trial_days}}{{t "Start {trial}-day free trial" trial=trial_days}}{{else}}{{t "Sign Up for "}}{{name}}{{/if}}</a>
 	</div>
 	{{/foreach}}
 	{{/get}}
