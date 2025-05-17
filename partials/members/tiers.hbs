@@ -60,6 +60,26 @@
 </div>
 {{#contentFor "membership_js"}}
 <script>
-!function(){const c=document.querySelector(".membership-cards"),t=document.querySelectorAll(".membership-switch button");c&&t.forEach(e=>{e.addEventListener("click",t=>{c.setAttribute("data-active-price",e.getAttribute("data-price"))})})}();
+(function(){
+    const container = document.querySelector(".membership-cards");
+    const buttons   = document.querySelectorAll(".membership-switch button");
+    if (!container || buttons.length === 0) return;
+
+    // initialize aria-pressed
+    const defaultPrice = container.getAttribute("data-active-price");
+    buttons.forEach(btn => {
+      btn.setAttribute("aria-pressed", btn.dataset.price === defaultPrice ? "true" : "false");
+    });
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        // update container
+        container.setAttribute("data-active-price", btn.dataset.price);
+        // update pressed states
+        buttons.forEach(b => b.setAttribute("aria-pressed","false"));
+        btn.setAttribute("aria-pressed","true");
+      });
+    });
+  })();
 </script>
 {{/contentFor}}
