@@ -1,0 +1,13 @@
+{{^has visibility="public"}}
+<span class="global-visibility{{#if feature_image}} is-image{{/if}}">
+	{{#has visibility="paid"}}
+	{{t "Paid-members"}}
+	{{/has}}
+	{{#has visibility="tiers"}}
+	{{tiers lastSeparator=", " suffix=""}}
+	{{/has}}
+	{{#has visibility="members"}}
+	{{t "Members"}}
+	{{/has}}
+</span>
+{{/has}}
