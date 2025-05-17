@@ -85,17 +85,19 @@
     padding-top: 3.2rem;
     border-top: 1px solid var(--divider-color);
 }
-/* Container for cards and switch */
+
+/* Container: switch + cards grid */
 .membership-cards {
 margin-top: 4rem;
-display: flex;
-flex-direction: column;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 gap: 2.4rem;
 }
 
-/* Price toggle switch */
+/* Price toggle switch spans full width above cards */
 .membership-switch {
-text-align: center;
+grid-column: 1 / -1;
+justify-self: center;
 }
 .membership-switch-wrap {
 display: inline-flex;
@@ -112,10 +114,6 @@ border: none;
 cursor: pointer;
 transition: background 0.2s ease;
 }
-.membership-switch-wrap button[data-price="monthly"]:focus,
-.membership-switch-wrap button[data-price="yearly"]:focus {
-outline: none;
-}
 .membership-switch-wrap button[data-price="monthly"][aria-pressed="true"],
 .membership-switch-wrap button[data-price="yearly"][aria-pressed="true"] {
 background-color: var(--brand-color);
@@ -125,14 +123,7 @@ color: var(--primary-text-color-invert);
 background-color: var(--hero-background-color);
 }
 
-/* Grid of membership cards */
-.membership-cards {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 2.4rem;
-}
-
-/* Individual card */
+/* Individual membership cards */
 .membership-card {
 display: flex;
 flex-direction: column;
@@ -141,14 +132,13 @@ padding: 2.4rem;
 background-color: var(--base-contrast);
 border: 1px solid var(--divider-color);
 border-radius: var(--radii-medium);
-box-shadow: var(--box-shadow, 0 2px 8px rgba(0,0,0,0.05));
+box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 transition: transform 0.2s ease;
 }
 .membership-card:hover {
 transform: translateY(-4px);
 }
 
-/* Card content */
 .membership-card-content {
 display: flex;
 flex-direction: column;
@@ -182,8 +172,6 @@ font-size: 1.6rem;
 color: var(--secondary-text-color);
 margin: 0;
 }
-
-/* Benefits list */
 .membership-card-options ul {
 list-style: disc;
 margin: 0;
@@ -195,7 +183,6 @@ color: var(--primary-text-color);
 margin-bottom: 0.8rem;
 }
 
-/* Subscribe buttons */
 a.membership-card .global-button {
 margin-top: 2rem;
 width: 100%;
