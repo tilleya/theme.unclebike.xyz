@@ -78,7 +78,93 @@
     text-align: center;
 }
 
+/* account.css */
 
+/* ─────────────────────────────────────────────────────────
+   Header section (title + description + optional cover)
+───────────────────────────────────────────────────────── */
+.account-header {
+    padding: 3.2rem 0;
+    background-color: var(--background-base);
+    border-bottom: 1px solid var(--divider-color);
+}
+
+.account-header .archive-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+.account-description {
+    /* already body-2, but tighten up for account context */
+    max-width: 60ch;
+    margin: 0;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Section headings / titles
+───────────────────────────────────────────────────────── */
+.account-details-title {
+    margin: 0 0 2.4rem;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Detail list (semantic <dl>) columns
+───────────────────────────────────────────────────────── */
+.account-details-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3.2rem; /* match your section spacing */
+}
+
+.account-detail-column {
+    flex: 1 1 300px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Definition terms & descriptions
+───────────────────────────────────────────────────────── */
+.account-detail-heading {
+    /* re-use existing form label styles but inline */
+    font-size: 1.4rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--secondary-text-color);
+    margin-bottom: 0.4rem;
+}
+
+.account-detail-content {
+    font-size: 1.6rem;
+    color: var(--primary-text-color);
+}
+
+/* ─────────────────────────────────────────────────────────
+   Actions area (buttons, alerts)
+───────────────────────────────────────────────────────── */
+.account-actions {
+    margin-top: 2.4rem;
+}
+
+.account-detail-alert {
+    margin-top: 1.6rem;
+    color: var(--red-color);
+}
+
+/* button group under details */
+.account-action-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+    margin-top: 2.4rem;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Upgrade section (free members)
+───────────────────────────────────────────────────────── */
+.upgrade-section {
+    margin-top: 4rem;
+    padding-top: 3.2rem;
+    border-top: 1px solid var(--divider-color);
+}
 
 
 @media (max-width: 767px) {
