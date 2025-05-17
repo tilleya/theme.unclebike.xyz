@@ -186,11 +186,25 @@ color: var(--primary-text-color);
 margin-bottom: 0.8rem;
 }
 
-/* Subscribe buttons */
-a.membership-card .global-button {
-margin-top: 2rem;
+/* Subscribe buttons: outlined style */
+.membership-card-button {
 width: 100%;
+padding: 1rem 0;
+background: transparent;
+border: 1px solid var(--brand-color);
+color: var(--brand-color);
+border-radius: var(--radii-small);
+font-size: 1.6rem;
+font-weight: var(--font-weight-bold);
 text-align: center;
+cursor: pointer;
+transition: background 0.2s ease, color 0.2s ease;
+text-decoration: none;
+display: inline-block;
+}
+.membership-card-button:hover {
+background-color: var(--brand-color);
+color: var(--primary-text-color-invert);
 }
 
 /* Hide non-active prices and buttons */
