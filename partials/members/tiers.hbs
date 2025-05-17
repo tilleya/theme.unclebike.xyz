@@ -82,4 +82,30 @@
     });
   })();
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var btn = document.getElementById("cieg-trigger");
+  if (!btn) return;
+
+  var urlMap = {
+    "price_1RPqpPECGitNFWv4IP5VLhrh": "https://widget.zenbooker.com/book/1746111848718x728354147005624300?embed=true&category=1747514527053x318956607590891500",
+    "price_1RPqpOECGitNFWv45T56svDJ": "https://widget.zenbooker.com/book/1746111848718x728354147005624300?embed=true&category=1747514527053x318956607590891500",
+    "price_1RPr8jECGitNFWv4vu5u2Aia": "https://widget.zenbooker.com/book/1746111848718xAAAABBBCCCDDD?embed=true&category=1747514527053x318956607590891500&coupon_code=READY15",
+    "price_1RPr8iECGitNFWv4Hr7G5TzF": "https://widget.zenbooker.com/book/1746111848718xAAAABBBCCCDDD?embed=true&category=1747514527053x318956607590891500&coupon_code=READY15",
+    "price_1R8RchECGitNFWv49yHCYY7U": "https://widget.zenbooker.com/book/1746111848718xXXXYYYZZZ123?embed=true&category=999888777666555444"
+    "price_1R8RcgECGitNFWv4aRyqEHUs": "https://widget.zenbooker.com/book/1746111848718xXXXYYYZZZ123?embed=true&category=999888777666555444"
+    // …add any other plan → widget URLs here
+  };
+
+  var planId = btn.dataset.planId;
+  var widgetUrl = urlMap[planId] || urlMap["price_1L2hseECGitNFWv4Cqsnd9mC"]; 
+  // fallback to a default if you like
+
+  btn.addEventListener("click", function(e) {
+    e.preventDefault();
+    Zenbooker.showPopupWidget(widgetUrl);
+  });
+});
+</script>
+
 {{/contentFor}}
