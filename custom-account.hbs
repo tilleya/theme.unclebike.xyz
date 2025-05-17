@@ -80,15 +80,15 @@
         {{/if}}
 
         <div class="account-action-links">
-          {{#if @member.subscriptions.[0]}}
-  <a  
-    id="cieg-trigger"  
-    class="button button-primary"  
-    href="#"  
-    data-plan-id="{{@member.subscriptions.[0].plan.id}}"
+         <div id="booking-widget" data-plan-id="{{#if @member.paid}}{{@member.subscriptions.[0].plan.id}}{{else}}free{{/if}}">
+  <a
+    id="account-book-btn"
+    class="button button-primary"
+    href="#"
   >
     {{t "Book with Member Perks"}}
   </a>
+</div>
 {{/if}}
           <a class="button button-secondary" href="javascript:" data-portal="account">
             {{t "Account settings"}}
