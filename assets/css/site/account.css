@@ -85,3 +85,127 @@
     padding-top: 3.2rem;
     border-top: 1px solid var(--divider-color);
 }
+/* Container for cards and switch */
+.membership-cards {
+margin-top: 4rem;
+display: flex;
+flex-direction: column;
+gap: 2.4rem;
+}
+
+/* Price toggle switch */
+.membership-switch {
+text-align: center;
+}
+.membership-switch-wrap {
+display: inline-flex;
+border: 1px solid var(--divider-color);
+border-radius: var(--radii-pill);
+overflow: hidden;
+}
+.membership-switch-wrap button {
+flex: 1 1 auto;
+padding: 0.8rem 2rem;
+font-size: 1.6rem;
+background: transparent;
+border: none;
+cursor: pointer;
+transition: background 0.2s ease;
+}
+.membership-switch-wrap button[data-price="monthly"]:focus,
+.membership-switch-wrap button[data-price="yearly"]:focus {
+outline: none;
+}
+.membership-switch-wrap button[data-price="monthly"][aria-pressed="true"],
+.membership-switch-wrap button[data-price="yearly"][aria-pressed="true"] {
+background-color: var(--brand-color);
+color: var(--primary-text-color-invert);
+}
+.membership-switch-wrap button:hover {
+background-color: var(--hero-background-color);
+}
+
+/* Grid of membership cards */
+.membership-cards {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 2.4rem;
+}
+
+/* Individual card */
+.membership-card {
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+padding: 2.4rem;
+background-color: var(--base-contrast);
+border: 1px solid var(--divider-color);
+border-radius: var(--radii-medium);
+box-shadow: var(--box-shadow, 0 2px 8px rgba(0,0,0,0.05));
+transition: transform 0.2s ease;
+}
+.membership-card:hover {
+transform: translateY(-4px);
+}
+
+/* Card content */
+.membership-card-content {
+display: flex;
+flex-direction: column;
+gap: 1.6rem;
+}
+.membership-card-title {
+font-size: 2rem;
+font-weight: var(--font-weight-bold);
+color: var(--primary-text-color);
+margin: 0;
+}
+.membership-card-price {
+font-size: 2.4rem;
+font-weight: var(--font-weight-bold);
+color: var(--brand-color);
+margin: 0;
+display: flex;
+align-items: baseline;
+gap: 0.4rem;
+}
+.membership-card-price sup {
+font-size: 1.4rem;
+vertical-align: text-top;
+}
+.membership-card-price span {
+font-size: 1.6rem;
+color: var(--secondary-text-color);
+}
+.membership-card-description {
+font-size: 1.6rem;
+color: var(--secondary-text-color);
+margin: 0;
+}
+
+/* Benefits list */
+.membership-card-options ul {
+list-style: disc;
+margin: 0;
+padding-left: 1.6rem;
+}
+.membership-card-options li {
+font-size: 1.6rem;
+color: var(--primary-text-color);
+margin-bottom: 0.8rem;
+}
+
+/* Subscribe buttons */
+a.membership-card .global-button {
+margin-top: 2rem;
+width: 100%;
+text-align: center;
+}
+
+/* Responsive tweaks */
+@media (max-width: 767px) {
+.membership-switch-wrap button {
+padding: 0.6rem 1.2rem;
+font-size: 1.4rem;
+}
+}
