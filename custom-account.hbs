@@ -80,10 +80,16 @@
         {{/if}}
 
         <div class="account-action-links">
-           <!-- Zenbooker inline popup button begin -->
-										
-	<a class="button button-primary" id="cieg-trigger"   onclick="Zenbooker.showPopupWidget('https://widget.zenbooker.com/book/1746111848718x728354147005624300?embed=true&category=1747514527053x318956607590891500');return false;">Book with Member Perks</a>
-	<!-- Zenbooker inline popup button end -->
+          {{#if @member.subscriptions.[0]}}
+  <a  
+    id="cieg-trigger"  
+    class="button button-primary"  
+    href="#"  
+    data-plan-id="{{@member.subscriptions.[0].plan.id}}"
+  >
+    {{t "Book with Member Perks"}}
+  </a>
+{{/if}}
           <a class="button button-secondary" href="javascript:" data-portal="account">
             {{t "Account settings"}}
           </a>
@@ -196,9 +202,12 @@ document.addEventListener("DOMContentLoaded", function() {
   if (!btn) return;
 
   var urlMap = {
-    "prod_S2WHD1w1dy6RkZ": "https://widget.zenbooker.com/book/1746111848718x728354147005624300?embed=true&category=1747514527053x318956607590891500",
-    "prod_S2WLe9gapSXWyo": "https://widget.zenbooker.com/book/1746111848718xAAAABBBCCCDDD?embed=true&category=1747514527053x318956607590891500&coupon_code=READY15",
-    "prod_S2WgxzWUqjjTL2": "https://widget.zenbooker.com/book/1746111848718xXXXYYYZZZ123?embed=true&category=999888777666555444"
+    "price_1RPqpPECGitNFWv4IP5VLhrh": "https://widget.zenbooker.com/book/1746111848718x728354147005624300?embed=true&category=1747514527053x318956607590891500",
+    "price_1RPqpOECGitNFWv45T56svDJ": "https://widget.zenbooker.com/book/1746111848718x728354147005624300?embed=true&category=1747514527053x318956607590891500",
+    "price_1RPr8jECGitNFWv4vu5u2Aia": "https://widget.zenbooker.com/book/1746111848718xAAAABBBCCCDDD?embed=true&category=1747514527053x318956607590891500&coupon_code=READY15",
+    "price_1RPr8iECGitNFWv4Hr7G5TzF": "https://widget.zenbooker.com/book/1746111848718xAAAABBBCCCDDD?embed=true&category=1747514527053x318956607590891500&coupon_code=READY15",
+    "price_1R8RchECGitNFWv49yHCYY7U": "https://widget.zenbooker.com/book/1746111848718xXXXYYYZZZ123?embed=true&category=999888777666555444"
+    "price_1R8RcgECGitNFWv4aRyqEHUs": "https://widget.zenbooker.com/book/1746111848718xXXXYYYZZZ123?embed=true&category=999888777666555444"
     // …add any other plan → widget URLs here
   };
 
