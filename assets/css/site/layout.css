@@ -78,6 +78,114 @@
     text-align: center;
 }
 
+/* Account Details */
+.account-section {
+    margin-top: 4rem;
+    padding-bottom: 6rem;
+    background-color: var(--background-color);
+}
+
+.account-wrap {
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--divider-color);
+    background-color: var(--background-base);
+}
+
+.account-description {
+    max-width: 64ch;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    color: var(--secondary-text-color);
+    margin-top: 1.2rem;
+}
+
+.account-details {
+    padding: 3.2rem 2.4rem;
+    margin-top: 4rem;
+    border-radius: var(--radii-medium);
+    background: var(--base-contrast);
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+}
+
+.account-details-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.account-detail-column {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+.account-detail-heading {
+    font-size: 1.4rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--secondary-text-color);
+    margin-bottom: 0.4rem;
+}
+
+.account-detail-content {
+    font-size: 1.6rem;
+    color: var(--primary-text-color);
+}
+
+.account-detail-alert {
+    font-size: 1.4rem;
+    color: var(--red-color);
+    line-height: 2.2rem;
+}
+
+.account-detail-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2.4rem;
+}
+
+.account-detail-buttons a {
+    font-size: 1.5rem;
+    color: var(--brand-color);
+    text-decoration: none;
+    font-weight: var(--font-weight-bold);
+    transition: color 0.2s ease;
+}
+
+.account-detail-buttons a:hover {
+    color: var(--primary-text-color);
+}
+
+.account-detail-cancel {
+    margin-top: 2.4rem;
+}
+
+.account-detail-cancel-button {
+    background-color: var(--red-color);
+    color: var(--white-color);
+    padding: 1rem 2rem;
+    border-radius: var(--radii-small);
+    font-weight: var(--font-weight-bold);
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.account-detail-cancel-button:hover {
+    opacity: 0.85;
+}
+
+.account-detail-cancel-error {
+    color: var(--red-color);
+    font-size: 1.4rem;
+    margin-top: 1rem;
+}
+
 
 @media (max-width: 767px) {
     .site-content {
