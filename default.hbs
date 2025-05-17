@@ -283,13 +283,10 @@ function renderStep() {
         });
     </script>
     {{!-- TOC --}}
-
-    {{ghost_foot}}
-    {{{block "membership_js"}}}
-        <script>
+ <script>
 document.addEventListener('DOMContentLoaded', function() {
   const container = document.getElementById('booking-widget');
-  const btn       = document.getElementById('cieg-trigger');
+  const btn       = document.getElementById('account-book-btn');
   if (!container || !btn || !window.Zenbooker) return;
 
   const planId = container.dataset.planId;
@@ -315,6 +312,9 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+    {{ghost_foot}}
+    {{{block "membership_js"}}}
+       
 
 </body>
 </html>
