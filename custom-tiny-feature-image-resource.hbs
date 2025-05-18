@@ -1,12 +1,14 @@
 {{!< default}}
-<div class="content-area">
+
     <main class="site-main serie-page">
         
-        {{#page}}
+       
 
     {{#post}}
         {{> "content" width="narrow" isTiny=true}}
     {{/post}}
+    <div class="content-area">
+     {{#page}}
  <section class="container-resource">
                 {{#if twitter_title }}
                     {{#get "pages" filter="tag:{{twitter_title}}" limit="all" order="published_at desc" as |content|}}
