@@ -132,7 +132,8 @@ account.css
 
 ─────────────────────────────────────────────────────────
    Actions area (buttons, alerts)
-─────────────────────────────────────────────────────────.account-actions {
+─────────────────────────────────────────────────────────
+.account-actions {
     margin-top: 2.4rem;
 }
 
@@ -150,13 +151,14 @@ button group under details.account-action-links {
 
 ─────────────────────────────────────────────────────────
    Upgrade section (free members)
-─────────────────────────────────────────────────────────.upgrade-section {
+─────────────────────────────────────────────────────────.
+upgrade-section {
     margin-top: 4rem;
     padding-top: 3.2rem;
     border-top: 1px solid var(--divider-color);
 }
 
-
+*/
 @media (max-width: 767px) {
     .site-content {
         margin-left: 1.2rem;
@@ -165,4 +167,4 @@ button group under details.account-action-links {
         border-radius: calc(var(--radii-small) + 1.2rem);
     }
 }
- */
+ 
