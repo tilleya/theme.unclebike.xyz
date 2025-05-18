@@ -286,13 +286,16 @@ function renderStep() {
                                         {{/unless}}
                                     {{else}}
                                         <a class="button button-primary button-head" href="https://unclebike.xyz/account">{{t 'Account' }}</a>
-                                           <a 
+                                         <div id="booking-trigger" class="membership-booker"
+     data-plan-id="{{#if @member.subscriptions}}{{@member.subscriptions.[0].plan.id}}{{else}}free{{/if}}">
+      <a 
     href="javascript:void(0);" 
     id="cieg-trigger" 
     class="gh-head-link button button-primary button-head"
     data-plan-id="{{#if @member.subscriptions}}{{@member.subscriptions.[0].plan.id}}{{else}}free{{/if}}">
     {{t "Book Online"}}
   </a>
+  </div>
                                     {{/unless}}
                                 {{else}}
                                     <a class="button button-primary button-head" href="{{@custom.navigation_buttons_link}}">{{@custom.navigation_buttons_text}}</a>
