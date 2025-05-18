@@ -4,9 +4,10 @@
    Header section (title + description + optional cover)
 ───────────────────────────────────────────────────────── */
 .account-header {
-    padding: 3.2rem 0;
+    padding: 3.2rem;
     background-color: var(--background-base);
-    border-bottom: 1px solid var(--divider-color);
+    border: 1px solid var(--divider-color);
+    border-radius: var(--radii-medium);
 }
 
 .account-header .archive-container {
