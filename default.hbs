@@ -27,30 +27,25 @@
 	<script src="https://cdn.zenbooker.com/widget/latest/zenbooker.js" type="text/javascript"></script>
 	
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const container = document.getElementById('booking-trigger');
-    const btn       = document.getElementById('zenbooker-trigger');
-    if (!container || !btn) {
-      console.warn("Booking trigger or button not found");
-      return;
-    }
+  document.addEventListener('click', function(e) {
+    // only handle our Zenbooker triggers
+    const btn = e.target.closest('.zenbooker-trigger');
+    if (!btn) return;
 
-    // Look up the right URL
-    const planId    = container.dataset.planId || 'free';
+    e.preventDefault();
+    // determine plan
+    const planId = (btn.dataset.planId || 'free').trim();
     const widgetUrl = window.embedMapping[planId] || window.embedMapping.free;
-    console.log("Using widget URL for plan", planId, "→", widgetUrl);
+    console.log('Zenbooker popup for', planId, '→', widgetUrl);
 
-    // On click, retry until Zenbooker is present
-    btn.addEventListener('click', function(e) {
-      e.preventDefault();
-      (function pop() {
-        if (window.Zenbooker && Zenbooker.showPopupWidget) {
-          Zenbooker.showPopupWidget(widgetUrl);
-        } else {
-          setTimeout(pop, 300);
-        }
-      })();
-    });
+    // retry until library is ready
+    (function pop() {
+      if (window.Zenbooker && Zenbooker.showPopupWidget) {
+        Zenbooker.showPopupWidget(widgetUrl);
+      } else {
+        setTimeout(pop, 300);
+      }
+    })();
   });
 </script>
 
