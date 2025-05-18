@@ -81,13 +81,21 @@
 
         <div class="account-action-links">
                    
-  <a  
-    id="account-book-btn"  
-    class="button button-primary"  
-    href="#"  
-    data-plan-id="{{@member.subscriptions.[0].plan.id}}">
+<div 
+  id="booking-trigger"
+  class="membership-booker"
+  data-plan-id="{{#if @member.subscriptions}}
+                  {{@member.subscriptions.[0].plan.id}}
+                {{else}}
+                  free
+                {{/if}}">
+  <a 
+    href="javascript:void(0);" 
+    id="cieg-trigger" 
+    class="button button-primary">
     {{t "Book with Member Perks"}}
   </a>
+</div>
 
           <a class="button button-secondary" href="javascript:" data-portal="account">
             {{t "Account settings"}}
@@ -162,10 +170,21 @@
         <a class="button button-primary" href="javascript:" data-portal="account">
           {{t "Account settings"}}
         </a>
-<div id="booking-widget" data-plan-id="{{#if @member.paid}}{{@member.subscriptions.[0].plan.id}}{{else}}free{{/if}}">
-  <a id="cieg-trigger" class="button button-primary" href="#">
+<div 
+  id="booking-trigger"
+  class="membership-booker"
+  data-plan-id="{{#if @member.subscriptions}}
+                  {{@member.subscriptions.[0].plan.id}}
+                {{else}}
+                  free
+                {{/if}}">
+  <a 
+    href="javascript:void(0);" 
+    id="cieg-trigger" 
+    class="button button-primary">
     {{t "Book with Member Perks"}}
   </a>
+</div>
 </div>
       </div>
    
