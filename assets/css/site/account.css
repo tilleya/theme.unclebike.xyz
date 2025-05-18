@@ -5,7 +5,7 @@
 ───────────────────────────────────────────────────────── */
 .account-header {
     padding: 3.2rem;
-    background-color: var(--background-base);
+    background-color: var(--background-color);
     border: 1px solid var(--divider-color);
     border-radius: var(--radii-medium);
     margin-bottom: 1.6rem;
@@ -21,6 +21,14 @@
     /* already body-2, but tighten up for account context */
     max-width: 60ch;
     margin: 0;
+}
+
+.account-details {
+	padding: 1.6rem;
+    background-color: var(--background-base);
+    border: 1px solid var(--divider-color);
+    border-radius: var(--radii-medium);
+    margin-bottom: 1.6rem;
 }
 
 /* ─────────────────────────────────────────────────────────
