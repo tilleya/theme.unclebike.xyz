@@ -28,30 +28,33 @@
 	
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-	const btn = document.getElementById('zenbooker-trigger')
-         || document.getElementById('cieg-trigger');
-    if (!container || !btn) {
-      console.warn("Booking trigger or button not found");
-      return;
-    }
+  const container = document.getElementById('booking-trigger');
+  const btn       = document.getElementById('zenbooker-trigger')
+                  || document.getElementById('cieg-trigger');
+  if (!btn) {
+    console.warn("Book button not found");
+    return;
+  }
 
-    // Look up the right URL
-    const planId    = container.dataset.planId || 'free';
-    const widgetUrl = window.embedMapping[planId] || window.embedMapping.free;
-    console.log("Using widget URL for plan", planId, "→", widgetUrl);
+  // Grab the planId from the button first, then the container, then default to 'free'
+  const rawId   = btn.dataset.planId
+               || (container && container.dataset.planId)
+               || 'free';
+  const planId  = rawId.trim();
+  const widgetUrl = window.embedMapping[planId] || window.embedMapping.free;
+  console.log("Using widget URL for plan", planId, "→", widgetUrl);
 
-    // On click, retry until Zenbooker is present
-    btn.addEventListener('click', function(e) {
-      e.preventDefault();
-      (function pop() {
-        if (window.Zenbooker && Zenbooker.showPopupWidget) {
-          Zenbooker.showPopupWidget(widgetUrl);
-        } else {
-          setTimeout(pop, 300);
-        }
-      })();
-    });
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    (function pop() {
+      if (window.Zenbooker && Zenbooker.showPopupWidget) {
+        Zenbooker.showPopupWidget(widgetUrl);
+      } else {
+        setTimeout(pop, 300);
+      }
+    })();
   });
+});
 </script>
 
 
