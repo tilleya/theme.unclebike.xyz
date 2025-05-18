@@ -272,10 +272,9 @@ function renderStep() {
                                     {{#unless @member}}
                                         {{#unless @site.members_invite_only}}
                                          <div 
-  id="booking-trigger" 
+    id="booking-trigger"
   class="membership-booker"
-  data-plan-id="{{#if @member.subscriptions}}{{@member.subscriptions.[0].plan.id}}{{else}}
-free{{/if}}">
+  data-plan-id="{{#if @member.subscriptions}}{{@member.subscriptions.[0].plan.id}}{{else}}free{{/if}}">
   <a 
     href="javascript:void(0);" 
     id="zenbooker-trigger" 
