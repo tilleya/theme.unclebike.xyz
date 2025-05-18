@@ -8,6 +8,7 @@
     background-color: var(--background-base);
     border: 1px solid var(--divider-color);
     border-radius: var(--radii-medium);
+    margin-bottom: 1.6rem;
 }
 
 .account-header .archive-container {
