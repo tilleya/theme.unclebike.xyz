@@ -240,6 +240,10 @@
     flex-direction: row-reverse;
     margin-bottom: 4rem;
     align-items: center;
+    padding: 3.2rem;
+    background-color: var(--background-base);
+    border: 1px solid var(--divider-color);
+    border-radius: var(--radii-medium);
 }
 
 .single-heading-wrap {
