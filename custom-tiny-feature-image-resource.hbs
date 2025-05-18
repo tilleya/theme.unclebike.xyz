@@ -1,0 +1,36 @@
+{{!< default}}
+
+<main class="site-main">
+
+    {{#post}}
+        {{> "content" width="narrow" isTiny=true}}
+    {{/post}}
+ <section class="container-resource">
+                {{#if twitter_title }}
+                    {{#get "pages" filter="tag:{{twitter_title}}" limit="all" order="published_at desc" as |content|}}
+                        <div class="cards kg-grid kg-grid-4col gh-feed container medium">
+                            {{#foreach content }}
+                                {{> "components/card-project" showVisual=true isSmall=true imageSizes="48px"}}
+                            {{/foreach}}
+                        </div>
+                    {{/get}}
+                {{else}}
+                    <div class="cards kg-grid container medium">
+                        <div class="empty-state">
+                            <p>✨ Hey, look like you haven't added a tag for this resource page yet! Let add it.</p>
+                            <p>Step 1/ From Ghost admin, open this page</p>
+                            <p>Step 2/ Open Page setting sidebar from the top right. Click X card</p>
+                            <p>Step 3/ In X description, add the slug of the tag.</p>
+                            <p>Step 4/ Save</p>
+                        </div>
+                    </div>
+                {{/if}}
+            </section>
+    {{#is "post"}}
+        {{#post}}
+            {{> "comments"}}
+        {{/post}}
+        {{> "related-posts"}}
+    {{/is}}
+
+</main>
