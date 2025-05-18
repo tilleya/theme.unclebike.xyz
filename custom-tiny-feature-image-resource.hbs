@@ -1,6 +1,8 @@
 {{!< default}}
-
-<main class="site-main">
+<div class="content-area">
+    <main class="site-main serie-page">
+        
+        {{#page}}
 
     {{#post}}
         {{> "content" width="narrow" isTiny=true}}
@@ -33,4 +35,10 @@
         {{> "related-posts"}}
     {{/is}}
 
-</main>
+  {{/page}}
+
+        {{!-- {{pagination}} --}}
+    </main>
+</div>
+
+{{#contentFor "body_class"}}{{#if next}} paged-next{{/if}}{{#if @member}} logged-in{{/if}}{{/contentFor}}
