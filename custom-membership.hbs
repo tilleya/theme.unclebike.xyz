@@ -1,5 +1,6 @@
 {{!< default}}
 {{#post}}
+<section class="account-section">
 <div class="archive-section account-header">
 	<div class="archive-wrap archive-alternate{{#if feature_image}} is-cover{{/if}}">
 		<div class="archive-container">
@@ -27,4 +28,5 @@
 {{^if @member}}
 <small class="global-question">{{t "Already have an account?"}} <a href="{{@site.url}}/signin/">{{t "Sign in"}}</a></small>
 {{/if}}
+</section>
 {{/post}}
