@@ -28,7 +28,8 @@
 	
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const btn = e.target.closest('#zenbooker-sidebar-trigger, #zenbooker-account-trigger');
+    const container = document.getElementById('booking-trigger');
+    const btn       = document.getElementById('zenbooker-trigger');
     if (!container || !btn) {
       console.warn("Booking trigger or button not found");
       return;
@@ -284,7 +285,7 @@ function renderStep() {
                                         <a class="button button-primary button-head" href="https://unclebike.xyz/account">{{t 'Account' }}</a>
                                            <a 
     href="javascript:void(0);" 
-    id="zenbooker-sidebar-trigger" 
+    id="zenbooker-trigger" 
     class="gh-head-link button button-primary button-head"
     data-plan-id="{{#if @member.subscriptions}}{{@member.subscriptions.[0].plan.id}}{{else}}free{{/if}}">
     {{t "Book Online"}}
