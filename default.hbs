@@ -24,19 +24,11 @@
   console.log("embedMapping loaded:", window.embedMapping);
 </script>
 	<script src="https://cdn.zenbooker.com/widget/latest/zenbooker.js" type="text/javascript"></script>
-	 <script>
-    !function(){
-      if (window.Zenbooker && typeof Zenbooker.showPopupWidget === "function") { return; }
-      var s = document.createElement("script");
-      s.src   = "https://cdn.zenbooker.com/widget/latest/zenbooker.js";
-      s.defer = true;
-      document.head.appendChild(s);
-    }();
-  </script>
+	
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const container = document.getElementById('booking-trigger');
-    const btn       = document.getElementById('cieg-trigger');
+    const btn       = document.getElementById('zenbooker-trigger');
     if (!container || !btn) {
       console.warn("Booking trigger or button not found");
       return;
