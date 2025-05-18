@@ -64,20 +64,7 @@
 
       <!-- ACTIONS -->
       <div class="account-actions">
-        {{!-- Cancel/Continue button uses your global-button styles --}}
-        {{cancel_link
-          class="button button-secondary account-detail-cancel-button"
-          errorClass="account-detail-cancel-error"
-          cancelLabel=(t "Cancel subscription")
-          continueLabel=(t "Continue subscription")
-        }}
-
-        {{#if cancel_at_period_end}}
-          <p class="account-detail-alert small">
-            {{t "Your subscription will expire on"}} — {{date current_period_end format="DD MMMM YYYY"}}.
-            {{t "If you change your mind in the meantime you can turn auto-renew back on to continue your subscription."}}
-          </p>
-        {{/if}}
+       
 
         <div class="account-action-links">
                    
@@ -97,6 +84,20 @@
           <a class="button button-secondary" href="javascript:" data-members-edit-billing>
             {{t "Edit billing info"}} &rarr;
           </a>
+           {{!-- Cancel/Continue button uses your global-button styles --}}
+        {{cancel_link
+          class="button button-secondary account-detail-cancel-button"
+          errorClass="account-detail-cancel-error"
+          cancelLabel=(t "Cancel subscription")
+          continueLabel=(t "Continue subscription")
+        }}
+
+        {{#if cancel_at_period_end}}
+          <p class="account-detail-alert small">
+            {{t "Your subscription will expire on"}} — {{date current_period_end format="DD MMMM YYYY"}}.
+            {{t "If you change your mind in the meantime you can turn auto-renew back on to continue your subscription."}}
+          </p>
+        {{/if}}
         </div>
       </div>
     </section>
