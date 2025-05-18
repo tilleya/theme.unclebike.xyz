@@ -86,9 +86,8 @@
   <a 
     href="javascript:void(0);" 
     id="zenbooker-trigger" 
-    class="button button-primary zenbooker-trigger"
-    data-plan-id="{{#if @member.subscriptions}}{{@member.subscriptions.[0].plan.id}}{{else}}free{{/if}}"
-  >
+    class="button button-primary"
+    data-plan-id="{{#if @member.subscriptions}}{{@member.subscriptions.[0].plan.id}}{{else}}free{{/if}}">
     {{t "Book with Member Perks"}}
   </a>
 </div>
