@@ -17,10 +17,13 @@
 	</div>
 	{{/if}}
 </div>
-<div class="global-heading">
-	<h3>{{t "Choose your plan"}}</h3>
-</div>
-{{>members/tiers free_tier=true}}
+  <!-- UPGRADE CTA -->
+    {{#if @site.paid_members_enabled}}
+    <section class="upgrade-section">
+      <h2 class="h3 membership-heading global-heading">{{t "Want more perks? Become a member!"}}</h2>
+	{{>members/tiers free_tier=true}}
+    </section>
+    {{/if}}
 {{^if @member}}
 <small class="global-question">{{t "Already have an account?"}} <a href="{{@site.url}}/signin/">{{t "Sign in"}}</a></small>
 {{/if}}
