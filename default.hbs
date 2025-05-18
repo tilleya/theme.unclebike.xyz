@@ -27,25 +27,29 @@
 	<script src="https://cdn.zenbooker.com/widget/latest/zenbooker.js" type="text/javascript"></script>
 	
 <script>
-  document.addEventListener('click', function(e) {
-    // only handle our Zenbooker triggers
-    const btn = e.target.closest('.zenbooker-trigger');
-    if (!btn) return;
+  document.addEventListener('DOMContentLoaded', function() {
+    const btn = e.target.closest('#zenbooker-sidebar-trigger, #zenbooker-account-trigger');
+    if (!container || !btn) {
+      console.warn("Booking trigger or button not found");
+      return;
+    }
 
-    e.preventDefault();
-    // determine plan
-    const planId = (btn.dataset.planId || 'free').trim();
+    // Look up the right URL
+    const planId    = container.dataset.planId || 'free';
     const widgetUrl = window.embedMapping[planId] || window.embedMapping.free;
-    console.log('Zenbooker popup for', planId, '→', widgetUrl);
+    console.log("Using widget URL for plan", planId, "→", widgetUrl);
 
-    // retry until library is ready
-    (function pop() {
-      if (window.Zenbooker && Zenbooker.showPopupWidget) {
-        Zenbooker.showPopupWidget(widgetUrl);
-      } else {
-        setTimeout(pop, 300);
-      }
-    })();
+    // On click, retry until Zenbooker is present
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      (function pop() {
+        if (window.Zenbooker && Zenbooker.showPopupWidget) {
+          Zenbooker.showPopupWidget(widgetUrl);
+        } else {
+          setTimeout(pop, 300);
+        }
+      })();
+    });
   });
 </script>
 
@@ -280,7 +284,7 @@ function renderStep() {
                                         <a class="button button-primary button-head" href="https://unclebike.xyz/account">{{t 'Account' }}</a>
                                            <a 
     href="javascript:void(0);" 
-    id="zenbooker-trigger" 
+    id="zenbooker-sidebar-trigger" 
     class="gh-head-link button button-primary button-head"
     data-plan-id="{{#if @member.subscriptions}}{{@member.subscriptions.[0].plan.id}}{{else}}free{{/if}}">
     {{t "Book Online"}}
