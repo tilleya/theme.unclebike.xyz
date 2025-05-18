@@ -33,7 +33,7 @@
 	{{/if}}
 	{{/if}}
 	{{#if @site.paid_members_enabled}}
-	{{#get "tiers" include="monthly_price,yearly_price,benefits" filter="visibility:public+type:paid" limit="all"}}
+	{{#get "tiers" include="monthly_price,yearly_price,benefits" filter="visibility:public" limit="all"}}
 	{{#foreach tiers}}
 	<div class="membership-card">
 		<div class="membership-card-content">
