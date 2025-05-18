@@ -290,7 +290,7 @@ function renderStep() {
         <!-- Dynamic popup button using your embedMapping logic -->
         <a 
           href="javascript:void(0);" 
-          id="booking-trigger"
+          id="zenbooker-trigger"
           data-plan-id="{{#if @member.subscriptions}}{{@member.subscriptions.[0].plan.id}}{{else}}free{{/if}}"
           class="gh-head-link button button-primary button-head">
           {{t "Book Online"}}
