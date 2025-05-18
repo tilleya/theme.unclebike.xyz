@@ -81,17 +81,13 @@
 
         <div class="account-action-links">
                    
-<div 
-  id="booking-trigger"
-  class="membership-booker"
-  data-plan-id="{{#if @member.subscriptions}}{{@member.subscriptions.[0].plan.id}}{{else}}free{{/if}}">
-  <a 
+ <a 
     href="javascript:void(0);" 
     id="zenbooker-trigger" 
-    class="button button-primary">
+    class="gh-head-link button button-primary button-head"
+    data-plan-id="{{#if @member.subscriptions}}{{@member.subscriptions.[0].plan.id}}{{else}}free{{/if}}">
     {{t "Book with Member Perks"}}
   </a>
-</div>
 
           <a class="button button-secondary" href="javascript:" data-portal="account">
             {{t "Account settings"}}
