@@ -271,32 +271,27 @@ function renderStep() {
                                 {{#match @custom.navigation_buttons "Subscription"}}
                                     {{#unless @member}}
                                         {{#unless @site.members_invite_only}}
-                                        
-  <a 
-  href="javascript:void(0);" 
+                                         <div 
   id="booking-trigger" 
-  data-plan-id="{{@member.subscriptions.[0].plan.id}}" 
-  class="gh-head-link button button-primary button-head">
-  {{t "Book Online"}}
-</a>
-
+  class="membership-booker"
+  data-plan-id="{{#if @member.subscriptions}}{{@member.subscriptions.[0].plan.id}}{{else}}free{{/if}}">
+  <a 
+    href="javascript:void(0);" 
+    id="zenbooker-trigger" 
+    class="gh-head-link button button-primary button-head">
+    {{t "Book Online"}}
+  </a>
+</div>
                                             <a class="gh-head-link" href="#/portal/signin" data-portal="signin">{{t 'Sign in' }}</a>
                                         {{else}}
                                             <a class="button button-primary button-head" href="#/portal/signin" data-portal="signin">{{t 'Sign in' }}</a>
                                         {{/unless}}
                                     {{else}}
                                         <a class="button button-primary button-head" href="https://unclebike.xyz/account">{{t 'Account' }}</a>
-                                         <div 
-    id="booking-trigger"
-  class="membership-booker"
-  data-plan-id="{{#if @member.subscriptions}}{{@member.subscriptions.[0].plan.id}}{{else}}free{{/if}}">
-  <a 
-    href="javascript:void(0);" 
-    id="zenbooker-trigger" 
-    class="gh-head-link button button-primary">
-    {{t "Book Online"}}
-  </a>
-</div>
+                                          <!-- Zenbooker inline popup button begin -->
+								
+										<a class="gh-head-link button button-primary button-head" id="cieg-trigger" onclick="Zenbooker.showPopupWidget('https://widget.zenbooker.com/book/1746111848718x728354147005624300?embed=true');return false;">Book Online</a>
+										<!-- Zenbooker inline popup button end -->
                                     {{/unless}}
                                 {{else}}
                                     <a class="button button-primary button-head" href="{{@custom.navigation_buttons_link}}">{{@custom.navigation_buttons_text}}</a>
