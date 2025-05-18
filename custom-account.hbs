@@ -125,7 +125,7 @@
     <header class="account-header archive-wrap archive-alternate{{#if feature_image}} is-cover{{/if}}">
       <div class="archive-container">
         <h1 class="global-title">
-          {{#if @member.name}}{{@member.name}}{{else}}{{t "Your account"}}{{/if}}
+          {{#if @member.name}}{{t "Hey "}}{{@member.firstname}}{{t "! 👋"}}{{else}}{{t "Your account"}}{{/if}}
         </h1>
         <p class="archive-description body-2 account-description">
           {{#if custom_excerpt}}
@@ -157,7 +157,7 @@
         {{#if @site.paid_members_enabled}}
         <div class="account-detail-column">
           <dt class="account-detail-heading">{{t "Your plan"}}</dt>
-          <dd class="account-detail-content">{{t "Free"}}</dd>
+          <dd class="account-detail-content"> {{tier.name}} — {{price plan}}/{{plan.interval}}</dd>
         </div>
         {{/if}}
       </dl>
