@@ -6,25 +6,12 @@
 
     {{#post}}
         {{> "content" width="narrow" isTiny=true isBook=false}}
-        {{#get "posts" limit="6" filter="tags:[{{post.tags.slug}}]+id:-{{post.id}}" as |related|}}
-    {{#if related}}
-        <section class="section-container related-wrapper kg-canvas">
-            <h3 class="section-title related-title">{{t 'Similar thoughts'}}</h3>
-            <div class="post-feed{{#match @custom.blog_article_layout "!=" "Minimal"}} expanded{{/match}}{{#match @custom.blog_article_layout "Right thumbnail"}} right-thumbnail{{/match}}{{#match @custom.blog_article_layout "Text-only"}} text-only{{/match}}{{#match @custom.blog_article_layout "Card"}} feed-card kg-grid kg-grid-3col{{/match}} gh-feed">
-                {{#foreach posts}}
-                    {{> "loop" noDate=false}}
-                {{/foreach}}
-            </div>
-        </section>
-    {{/if}}
-{{/get}}
     {{/post}}
     <div class="content-area">
-    
      {{#page}}
  <section class="container-resource">
                 {{#if twitter_title }}
-                    {{#get "pages" filter="tag:[{{post.tag}}]" limit="all" order="published_at desc" as |content|}}
+                    {{#get "pages" filter="tags:[{{page.tags}}]" limit="all" order="published_at desc" as |content|}}
                         <div class="cards kg-grid kg-grid-4col gh-feed container medium">
                             {{#foreach content }}
                                 {{> "components/card-project" showVisual=true isSmall=true imageSizes="64px"}}
