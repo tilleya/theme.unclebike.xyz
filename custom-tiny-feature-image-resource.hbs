@@ -6,9 +6,7 @@
 
     {{#post}}
         {{> "content" width="narrow" isTiny=true isBook=false}}
-    {{/post}}
-    <div class="content-area">
-    {{#get "posts" limit="6" filter="tags:[{{post.tags}}]+id:-{{post.id}}" as |related|}}
+        {{#get "posts" limit="6" filter="tags:[{{post.tags}}]+id:-{{post.id}}" as |related|}}
     {{#if related}}
         <section class="section-container related-wrapper kg-canvas">
             <h3 class="section-title related-title">{{t 'Similar thoughts'}}</h3>
@@ -20,6 +18,9 @@
         </section>
     {{/if}}
 {{/get}}
+    {{/post}}
+    <div class="content-area">
+    
      {{#page}}
  <section class="container-resource">
                 {{#if twitter_title }}
