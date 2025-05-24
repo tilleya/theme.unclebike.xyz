@@ -63,6 +63,19 @@
                         </span>
                     </div>
                 {{/if}}
+                {{else}}
+                                <div class="single-meta book-meta">
+                        <span class="single-meta-item">
+                            Status:
+                            {{#has tag="#pricing"}}
+                                {{t 'Starting at:'}}{{twitter_title}}
+                            {{else}}
+                                {{t '•'}}
+                            {{/has}}
+                        </span>
+                
+                    </div>
+                {{/else}}
                 {{/if}}
 
                 {{#is "post"}}
