@@ -47,7 +47,8 @@
                     </div>
                 {{/if}}
 
-                {{#if isTiny isBook}}
+                {{#if isTiny}}
+                {{#if isBook}}
                     <div class="single-meta book-meta">
                         <span class="single-meta-item">
                             Status:
@@ -61,6 +62,7 @@
                             Read year: {{date published_at format="YYYY"}}
                         </span>
                     </div>
+                {{/if}}
                 {{/if}}
 
                 {{#is "post"}}
