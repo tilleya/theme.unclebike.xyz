@@ -35,7 +35,7 @@
 
                 {{#if isTiny}}    
                     {{#if twitter_description}}    
-                        <div class="sub-heading single-meta">{{twitter_description}}</div>
+                        <div class="sub-heading single-meta">{{feature_image_caption}}</div>
                     {{/if}}
                 {{/if}}
 
@@ -65,11 +65,11 @@
                     {{else}}
                         <div class="single-meta book-meta">
                         <span class="single-meta-item">
-                            Status:
+                            
                             {{#has tag="#pricing"}}
-                                {{t ':'}}{{twitter_title}}
+                                {{t 'Starting at:'}}{{twitter_description}}
                             {{else}}
-                                {{twitter_title}}
+                                Add to Booking for Pricing
                             {{/has}}
                         </span>
                     </div>
@@ -101,7 +101,7 @@
                             alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
                             
                             {{#if feature_image_caption}}
-                                <figcaption>{{feature_image_caption}}</figcaption>
+                                <figcaption></figcaption>
                             {{/if}}
                     </figure>
                 {{/unless}}
