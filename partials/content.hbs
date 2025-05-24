@@ -64,16 +64,15 @@
                     </div>
                 {{/if}}
                 {{else}}
-                                <div class="single-meta book-meta">
+                        <div class="single-meta book-meta">
                         <span class="single-meta-item">
                             Status:
                             {{#has tag="hash-pricing"}}
                                 {{t 'Starting at:'}}{{twitter_title}}
                             {{else}}
-                                {{t '•'}}
+                                {{twitter_title}}
                             {{/has}}
                         </span>
-                
                     </div>
                 {{/else}}
                 {{/if}}
