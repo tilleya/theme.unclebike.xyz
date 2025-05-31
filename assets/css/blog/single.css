@@ -245,7 +245,7 @@
     background-color: var(--background-base);
     border: 1px solid var(--divider-color);
     border-radius: var(--radii-medium);
-    max-height: clamp(44%, 48rem, 300px);
+    max-height: clamp(40rem, 28rem + 20vw, 48rem);
 }
 
 .single-heading-wrap {
