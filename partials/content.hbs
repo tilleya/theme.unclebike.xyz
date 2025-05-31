@@ -66,15 +66,15 @@
                         <div class="single-meta book-meta">
                         <span class="single-meta-item">
                             {{#if twitter_description}}
-                            {{#has tag="#pricing"}}
-                                {{t 'Starting at '}}{{twitter_description}}
+                            	{{#has tag="#pricing"}}
+                                	{{t 'Starting at '}}{{twitter_description}}
+                            	{{else}}
+                                	{{Add to Booking for Pricing}}
+                            	{{/has}}
                             {{else}}
-                                {{Add to Booking for Pricing}}
-                            {{/has}}
-                            {{else}}
-                            {{#has tag="#landing"}}
-                                {{caption}}
-                            {{/has}}
+                            	
+                                	{{caption}}
+                            	
                             {{/if}}
                         </span>
                     </div>
