@@ -267,7 +267,7 @@
     font-family: var(--font-serif);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 960px) {
     .single-header {
         margin-bottom: 3rem;
     }
