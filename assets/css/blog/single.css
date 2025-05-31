@@ -252,7 +252,7 @@
 }
 
 .tiny-image-wrap .single-media {
-    width: 33%;
+    width: clamp(16rem,33%,300px);
     margin-top: 0;
     overflow-y: visible;
     align-self: self-end;
