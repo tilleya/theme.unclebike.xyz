@@ -253,6 +253,8 @@
 .tiny-image-wrap .single-media {
     width: 33%;
     margin-top: 0;
+    overflow-y: visible;
+    align-self: self-end;
 }
 
 .book-meta {
