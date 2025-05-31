@@ -298,5 +298,6 @@
 
     .tiny-image-wrap .single-media {
         width: 50%;
+        align-self: self-start;
     }
 }
