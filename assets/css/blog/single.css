@@ -270,7 +270,7 @@
 @media (max-width: 960px) {
     .single-header {
         margin-bottom: 3rem;
-        margin-top: clamp(0rem, 10rem, 15rem);
+        margin-top: clamp(0%, 10rem, 15rem);
     }
 
     .single-cta {
