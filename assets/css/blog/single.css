@@ -303,7 +303,7 @@
     }
 
     .tiny-image-wrap .single-media {
-        width: 50%;
-        align-self: self-start;
+        width: 60%;
+        align-self: start;
     }
 }
