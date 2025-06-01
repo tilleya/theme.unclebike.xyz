@@ -238,7 +238,7 @@
 
 .tiny-image-wrap {
     display: flex;
-    gap: 4rem;
+    gap: 2.5rem;
     flex-direction: row-reverse;
     margin-bottom: 1rem;
     align-items: center;
@@ -300,6 +300,7 @@
         flex-direction: column-reverse;
         max-height: clamp(28rem, 28rem + 20vw, 48rem);
         margin-bottom: 1rem;
+        gap: 0;
 
     }
 
