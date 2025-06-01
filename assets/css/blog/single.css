@@ -300,6 +300,7 @@
         flex-direction: column-reverse;
         max-height: clamp(28rem, 28rem + 20vw, 48rem);
         margin-bottom: 1rem;
+        margin-top: 1rem;
         gap: 0;
 
     }
