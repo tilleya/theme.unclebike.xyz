@@ -3,6 +3,7 @@
     z-index: 1;
     position: relative;
     align-items:end;
+    margin-top: clamp(0%, 10rem, 15rem);
 }
 
 .single-header-narrow {
@@ -270,7 +271,7 @@
 @media (max-width: 960px) {
     .single-header {
         margin-bottom: 3rem;
-        margin-top: clamp(0%, 10rem, 15rem);
+
     }
 
     .single-cta {
