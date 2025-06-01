@@ -8,7 +8,12 @@
 			<div class="archive-title">
 				<div>
 					<h1 class="global-title">{{title}}</h1>
-					<p class="archive-description">{{t "Unlock full access to {blog-title} and see the entire library of subscribers-only content & updates" blog-title=@site.title}}</p>
+					<p class="archive-description">
+					{{if excerpt}}
+						{{excerpt}}
+					{{else}}
+					{{t "Unlock full access to {blog-title} and see the entire library of subscribers-only content & updates" blog-title=@site.title}}</p>
+					{{/if}}
 				</div>
 			</div>
 		</div>
