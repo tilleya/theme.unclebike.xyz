@@ -4,9 +4,9 @@
   "description": "Uncle Bike - a friend of your bike",
   "lang": "en",
   "start_url": "/",
-  "background_color": "#ffffff",
+  "background_color": "#f6decd",
   "display": "standalone",
-  "theme_color": "#e50b4f",
+  "theme_color": "#ed9888",
   "icons": [
     {
       "src": "/assets/icon-192x192.png",
