@@ -3,7 +3,7 @@
   "short_name": "Uncle",
   "description": "Uncle Bike - a friend of your bike",
   "lang": "en",
-  "start_url": "/",
+  "start_url": "/membership",
   "background_color": "#f6decd",
   "display": "standalone",
   "theme_color": "#ed9888",
