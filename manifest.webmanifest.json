@@ -1,0 +1,22 @@
+{
+  "name": "Uncle Ghost Theme",
+  "short_name": "Uncle",
+  "description": "Uncle Bike - a friend of your bike",
+  "lang": "en",
+  "start_url": "/",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "theme_color": "#e50b4f",
+  "icons": [
+    {
+      "src": "/assets/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/assets/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
